@@ -1,0 +1,8 @@
+dev/Cats Tale/.vsconfig
+*.sln
+*.csproj
+*.suo
+dev/Cats Tale/Library/
+dev/Cats Tale/Logs/
+dev/Cats Tale/Packages/
+dev/Cats Tale/obj/

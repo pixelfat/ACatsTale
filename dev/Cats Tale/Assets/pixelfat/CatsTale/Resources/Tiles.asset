@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740df8e0b5680243bcab2b7bcc4cf51, type: 3}
+  m_Name: Tiles
+  m_EditorClassIdentifier: Assembly-CSharp::TileViewLibrary
+  tileItems:
+  - type: 0
+    tileView: {fileID: 8958198674788748897, guid: 0149678b1004ef849bf5093984f37ff1,
+      type: 3}
+  - type: 1
+    tileView: {fileID: 8958198674788748897, guid: e320bd04a212ed04daabb314993b8e13,
+      type: 3}
+  - type: 2
+    tileView: {fileID: 8958198674788748897, guid: b8c34826808b6e545a29aff118630023,
+      type: 3}
+  - type: 3
+    tileView: {fileID: 8958198674788748897, guid: 6d7f3819f7979a448bf6dc1235434a13,
+      type: 3}
