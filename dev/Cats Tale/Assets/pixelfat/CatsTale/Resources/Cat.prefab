@@ -1,0 +1,1608 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6251374826672987009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276839}
+  m_Layer: 0
+  m_Name: KittenLLeg2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987009}
+  m_LocalRotation: {x: -0.01916013, y: 0.04845488, z: 0.7627799, w: 0.64455557}
+  m_LocalPosition: {x: -0.21379583, y: 0.000000028610229, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276841}
+  m_Father: {fileID: 6251374826673276863}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.6597295, y: 1.9138404, z: 99.50919}
+--- !u!1 &6251374826672987011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276841}
+  m_Layer: 0
+  m_Name: KittenLLegPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987011}
+  m_LocalRotation: {x: -0.061139174, y: -0.008103698, z: -0.63911706, w: 0.76663274}
+  m_LocalPosition: {x: -0.20329186, y: 0.000000019073486, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.9999998, z: 0.99999994}
+  m_Children:
+  - {fileID: 6251374826673276843}
+  m_Father: {fileID: 6251374826673276839}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.975374, y: 3.7891014, z: -79.83159}
+--- !u!1 &6251374826672987013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276843}
+  m_Layer: 0
+  m_Name: KittenLLegDigit01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987013}
+  m_LocalRotation: {x: 0.0034172176, y: 0.0379698, z: -0.48345715, w: 0.87453747}
+  m_LocalPosition: {x: -0.12450127, y: 0, z: -0.000000009536743}
+  m_LocalScale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276841}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2.44673, y: 3.6215253, z: -57.791553}
+--- !u!1 &6251374826672987015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276833}
+  m_Layer: 0
+  m_Name: KittenRLeg1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987015}
+  m_LocalRotation: {x: 0.8504001, y: -0.5253554, z: 0.017360313, w: 0.022803709}
+  m_LocalPosition: {x: 0.025294228, y: 0.048919335, z: -0.061738767}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276845}
+  m_Father: {fileID: 6251374826673276855}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 3.2690785, y: 179.68054, z: -116.595695}
+--- !u!1 &6251374826672987017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276845}
+  m_Layer: 0
+  m_Name: KittenRLeg2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987017}
+  m_LocalRotation: {x: 0.019191587, y: -0.048494503, z: 0.76277727, w: 0.6445548}
+  m_LocalPosition: {x: -0.21379584, y: 0, z: 0.000000009536743}
+  m_LocalScale: {x: 0.9999998, y: 1.0000001, z: 0.9999999}
+  m_Children:
+  - {fileID: 6251374826673276847}
+  m_Father: {fileID: 6251374826673276833}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 5.6655283, y: -1.9140388, z: 99.50896}
+--- !u!1 &6251374826672987019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276847}
+  m_Layer: 0
+  m_Name: KittenRLegPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987019}
+  m_LocalRotation: {x: 0.061118748, y: 0.008101501, z: -0.6393579, w: 0.76643354}
+  m_LocalPosition: {x: -0.20329185, y: 0.000000019073486, z: 0.000000009536743}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 6251374826673276881}
+  m_Father: {fileID: 6251374826673276845}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 5.97223, y: -3.789653, z: -79.8674}
+--- !u!1 &6251374826672987021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276881}
+  m_Layer: 0
+  m_Name: KittenRLegDigit01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987021}
+  m_LocalRotation: {x: -0.0034449752, y: -0.037974592, z: -0.48318338, w: 0.87468845}
+  m_LocalPosition: {x: -0.124501295, y: 0.000000009536743, z: -0.000000009536743}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276847}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -2.4486468, y: -3.6212363, z: -57.755653}
+--- !u!1 &6251374826672987023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276835}
+  m_Layer: 0
+  m_Name: KittenSpine1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987023}
+  m_LocalRotation: {x: 0.000000007764953, y: 0.00000007685278, z: -0.1521532, w: 0.98835695}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276883}
+  m_Father: {fileID: 6251374826673276855}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -0.103142366, y: 0.05626434, z: -17.094353}
+--- !u!1 &6251374826672987025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276849}
+  - component: {fileID: 6251374826665601039}
+  m_Layer: 0
+  m_Name: Cat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276851}
+  - {fileID: 6251374826673276853}
+  - {fileID: 6251374826673276855}
+  - {fileID: 6251374826673276857}
+  - {fileID: 6251374826673276859}
+  - {fileID: 6251374826673276861}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6251374826665601039
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b242fb131580eb9478fe4717b4a8fdde, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8ce98cc77a8182942a18761ea19ac5fe, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6251374826672987027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276851}
+  m_Layer: 0
+  m_Name: KittenLLegPlatform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987027}
+  m_LocalRotation: {x: 0.5243368, y: -0.5243368, z: -0.47441638, w: 0.47441638}
+  m_LocalPosition: {x: -0.05951414, y: 0.000000034288064, z: 0.21389937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
+--- !u!1 &6251374826672987029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276853}
+  m_Layer: 0
+  m_Name: KittenLLegPlatform 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987029}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
+  m_LocalPosition: {x: -0.06856794, y: -0.000000051198466, z: -0.17858961}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -95.7228, z: -90}
+--- !u!1 &6251374826672987031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276855}
+  m_Layer: 0
+  m_Name: KittenPelvis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987031}
+  m_LocalRotation: {x: -0.6960414, y: 0.124604635, z: 0.69604146, w: -0.12460473}
+  m_LocalPosition: {x: 0.00000007515342, y: 0.45851317, z: -0.23971836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276863}
+  - {fileID: 6251374826673276833}
+  - {fileID: 6251374826673276835}
+  - {fileID: 6251374826673276837}
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.000005976524, y: -89.999985, z: -159.70094}
+--- !u!1 &6251374826672987033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276857}
+  m_Layer: 0
+  m_Name: KittenRLegPlatform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987033}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0.06856799, y: -0.000000051198466, z: -0.17858957}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
+--- !u!1 &6251374826672987035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276859}
+  m_Layer: 0
+  m_Name: KittenRLegPlatform 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987035}
+  m_LocalRotation: {x: -0.47441652, y: 0.47441652, z: 0.5243367, w: -0.5243367}
+  m_LocalPosition: {x: 0.05951407, y: 0.00000003428806, z: 0.21389937}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0.19152172, y: -84.28582, z: -95.18164}
+--- !u!1 &6251374826672987037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276861}
+  - component: {fileID: 6251374826669807311}
+  m_Layer: 0
+  m_Name: MESH_Cat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987037}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276849}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &6251374826669807311
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987037}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0827515221287164890d62ce4540eb11, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: b242fb131580eb9478fe4717b4a8fdde, type: 3}
+  m_Bones:
+  - {fileID: 6251374826673276845}
+  - {fileID: 6251374826673276847}
+  - {fileID: 6251374826673276833}
+  - {fileID: 6251374826673276885}
+  - {fileID: 6251374826673276887}
+  - {fileID: 6251374826673276893}
+  - {fileID: 6251374826673276855}
+  - {fileID: 6251374826673276883}
+  - {fileID: 6251374826673276835}
+  - {fileID: 6251374826673276863}
+  - {fileID: 6251374826673276839}
+  - {fileID: 6251374826673276837}
+  - {fileID: 6251374826673276901}
+  - {fileID: 6251374826673276865}
+  - {fileID: 6251374826673276891}
+  - {fileID: 6251374826673276877}
+  - {fileID: 6251374826673276889}
+  - {fileID: 6251374826673276925}
+  - {fileID: 6251374826673276913}
+  - {fileID: 6251374826673276869}
+  - {fileID: 6251374826673276867}
+  - {fileID: 6251374826673276927}
+  - {fileID: 6251374826673276879}
+  - {fileID: 6251374826673276897}
+  - {fileID: 6251374826673276899}
+  - {fileID: 6251374826673276873}
+  - {fileID: 6251374826673276871}
+  - {fileID: 6251374826673276875}
+  - {fileID: 6251374826673276923}
+  - {fileID: 6251374826673276921}
+  - {fileID: 6251374826673276917}
+  - {fileID: 6251374826673276911}
+  - {fileID: 6251374826673276909}
+  - {fileID: 6251374826673276903}
+  - {fileID: 6251374826673276907}
+  - {fileID: 6251374826673276905}
+  - {fileID: 6251374826673276881}
+  - {fileID: 6251374826673276915}
+  - {fileID: 6251374826673276919}
+  - {fileID: 6251374826673276841}
+  - {fileID: 6251374826673276895}
+  - {fileID: 6251374826673276843}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 6251374826673276855}
+  m_AABB:
+    m_Center: {x: -0.16433837, y: 0.19724634, z: 0.01381097}
+    m_Extent: {x: 0.65838116, y: 0.40853187, z: 0.18935183}
+  m_DirtyAABB: 0
+--- !u!1 &6251374826672987039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276863}
+  m_Layer: 0
+  m_Name: KittenLLeg1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987039}
+  m_LocalRotation: {x: 0.85040194, y: -0.5253541, z: -0.017349768, w: -0.022773389}
+  m_LocalPosition: {x: 0.025294198, y: 0.04891941, z: 0.061738774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276839}
+  m_Father: {fileID: 6251374826673276855}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.2654846, y: -179.67975, z: -116.59594}
+--- !u!1 &6251374826672987041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276871}
+  m_Layer: 0
+  m_Name: KittenLLeg2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987041}
+  m_LocalRotation: {x: 0.007344407, y: -0.004353852, z: -0.21632649, w: 0.9762838}
+  m_LocalPosition: {x: -0.19724025, y: -0.000000009536743, z: -0.000000042915342}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276873}
+  m_Father: {fileID: 6251374826673276869}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.5144041, y: -1.4542325, z: -32.03282}
+--- !u!1 &6251374826672987043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276873}
+  m_Layer: 0
+  m_Name: KittenLLegPalm 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987043}
+  m_LocalRotation: {x: -0.019132601, y: -0.08530205, z: -0.29680914, w: 0.95092684}
+  m_LocalPosition: {x: -0.15373598, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999999}
+  m_Children:
+  - {fileID: 6251374826673276875}
+  m_Father: {fileID: 6251374826673276871}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -4.9924426, y: -8.710909, z: -34.28854}
+--- !u!1 &6251374826672987045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276875}
+  m_Layer: 0
+  m_Name: KittenLLegDigit01 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987045}
+  m_LocalRotation: {x: -0.06412622, y: -0.024303712, z: -0.5318269, w: 0.8440719}
+  m_LocalPosition: {x: -0.0695849, y: 0.000000019073486, z: 0}
+  m_LocalScale: {x: 1.0000004, y: 1, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276873}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -7.436881, y: 0.28694105, z: -60.906876}
+--- !u!1 &6251374826672987047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276865}
+  m_Layer: 0
+  m_Name: KittenNeck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987047}
+  m_LocalRotation: {x: 0.00046531938, y: 0.006836828, z: 0.1479732, w: 0.98896766}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276877}
+  m_Father: {fileID: 6251374826673276893}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.68542475, y: -3.0271506, z: 22.88298}
+--- !u!1 &6251374826672987049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276877}
+  m_Layer: 0
+  m_Name: KittenNeck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987049}
+  m_LocalRotation: {x: 0.001334177, y: 0.021218758, z: 0.011324595, w: 0.99970984}
+  m_LocalPosition: {x: -0.07385658, y: 0.000000019073486, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_Children:
+  - {fileID: 6251374826673276879}
+  m_Father: {fileID: 6251374826673276865}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.096213624, y: 2.225484, z: 10.85682}
+--- !u!1 &6251374826672987051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276879}
+  m_Layer: 0
+  m_Name: KittenNeck3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987051}
+  m_LocalRotation: {x: 0.009323458, y: 0.021761045, z: -0.21954179, w: 0.9753158}
+  m_LocalPosition: {x: -0.07385658, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 6251374826673276913}
+  m_Father: {fileID: 6251374826673276877}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.3153362, y: 7.791155, z: -19.331745}
+--- !u!1 &6251374826672987053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276913}
+  m_Layer: 0
+  m_Name: KittenHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987053}
+  m_LocalRotation: {x: 0.03830564, y: 0.0063288957, z: -0.38975862, w: 0.9200983}
+  m_LocalPosition: {x: -0.07385658, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 6251374826673276915}
+  - {fileID: 6251374826673276917}
+  - {fileID: 6251374826673276919}
+  - {fileID: 6251374826673276921}
+  - {fileID: 6251374826673276923}
+  m_Father: {fileID: 6251374826673276879}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 12.685443, y: 5.3667235, z: -51.65114}
+--- !u!1 &6251374826672987055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276915}
+  m_Layer: 0
+  m_Name: KittenEarL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987055}
+  m_LocalRotation: {x: -0.0639904, y: 0.31988382, z: 0.6770327, w: 0.65970176}
+  m_LocalPosition: {x: 0.0180579, y: -0.02623764, z: 0.07146164}
+  m_LocalScale: {x: 0.9999998, y: 0.99999976, z: 0.99999976}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276913}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -30.859875, y: 22.79209, z: 88.555855}
+--- !u!1 &6251374826672987057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276883}
+  m_Layer: 0
+  m_Name: KittenSpine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987057}
+  m_LocalRotation: {x: 0.0000000022440372, y: 0.000000043260176, z: -0.06771142, w: 0.997705}
+  m_LocalPosition: {x: -0.07464365, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276885}
+  m_Father: {fileID: 6251374826673276835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.17068167, y: 0.22119826, z: -7.7607045}
+--- !u!1 &6251374826672987059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276885}
+  m_Layer: 0
+  m_Name: KittenSpine3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987059}
+  m_LocalRotation: {x: -0.000000009775701, y: -0.000000053717237, z: -0.007096025,
+    w: 0.99997485}
+  m_LocalPosition: {x: -0.07464362, y: 0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276887}
+  m_Father: {fileID: 6251374826673276883}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.15655911, y: 0.2565664, z: -1.2677517}
+--- !u!1 &6251374826672987061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276887}
+  m_Layer: 0
+  m_Name: KittenSpine4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987061}
+  m_LocalRotation: {x: 0.000000024013756, y: 0.00000004235354, z: 0.022465216, w: 0.99974763}
+  m_LocalPosition: {x: -0.07464366, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276889}
+  m_Father: {fileID: 6251374826673276885}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.15061185, y: 0.22076376, z: 1.986476}
+--- !u!1 &6251374826672987063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276889}
+  m_Layer: 0
+  m_Name: KittenSpine5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987063}
+  m_LocalRotation: {x: -0.0000000048422164, y: -0.000000025405866, z: 0.10880958,
+    w: 0.9940626}
+  m_LocalPosition: {x: -0.07464365, y: 0, z: 9.094947e-15}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
+  m_Children:
+  - {fileID: 6251374826673276891}
+  m_Father: {fileID: 6251374826673276887}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.1352042, y: 0.14608389, z: 11.897046}
+--- !u!1 &6251374826672987065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276891}
+  m_Layer: 0
+  m_Name: KittenSpine6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987065}
+  m_LocalRotation: {x: -0.0000000045149435, y: -0.00000003667255, z: 0.05506903, w: 0.9984826}
+  m_LocalPosition: {x: -0.07464365, y: 0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276893}
+  m_Father: {fileID: 6251374826673276889}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.09802362, y: 0.05725092, z: 5.774208}
+--- !u!1 &6251374826672987067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276893}
+  m_Layer: 0
+  m_Name: KittenRibcage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987067}
+  m_LocalRotation: {x: -0.000000016496038, y: -0.00000002394444, z: 0.033036545, w: 0.99945414}
+  m_LocalPosition: {x: -0.07464363, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276895}
+  - {fileID: 6251374826673276865}
+  - {fileID: 6251374826673276867}
+  m_Father: {fileID: 6251374826673276891}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.03747446, y: -0.017304087, z: 3.5574348}
+--- !u!1 &6251374826672987069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276895}
+  m_Layer: 0
+  m_Name: KittenLLegShoulderblade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987069}
+  m_LocalRotation: {x: 0.9010193, y: -0.38150144, z: -0.06696353, w: -0.1952867}
+  m_LocalPosition: {x: 0.05462776, y: -0.004945564, z: 0.040628996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276869}
+  m_Father: {fileID: 6251374826673276893}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -23.766321, y: 178.22589, z: -133.72998}
+--- !u!1 &6251374826672987071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276869}
+  m_Layer: 0
+  m_Name: KittenLLeg1 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987071}
+  m_LocalRotation: {x: -0.0151386745, y: 0.25690162, z: 0.72185147, w: 0.6424195}
+  m_LocalPosition: {x: -0.17409118, y: -0.000000038146972, z: -0.000000038146972}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 6251374826673276871}
+  m_Father: {fileID: 6251374826673276895}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -22.596764, y: 21.190813, z: 93.62915}
+--- !u!1 &6251374826672987073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276899}
+  m_Layer: 0
+  m_Name: KittenRLegDigit01 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987073}
+  m_LocalRotation: {x: 0.06423677, y: 0.024207318, z: -0.53182423, w: 0.84406793}
+  m_LocalPosition: {x: -0.06958492, y: 0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276897}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 10.363871, y: 1.3563089, z: -55.07244}
+--- !u!1 &6251374826672987075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276837}
+  m_Layer: 0
+  m_Name: KittenTail1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987075}
+  m_LocalRotation: {x: 0.000000014626631, y: 0.000000021668638, z: 0.9979782, w: -0.063557684}
+  m_LocalPosition: {x: 0.030880852, y: -0.0066408156, z: 7.809467e-10}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276901}
+  m_Father: {fileID: 6251374826673276855}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -0.0000019322997, y: 0.0000020475427, z: 177.24652}
+--- !u!1 &6251374826672987077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276901}
+  m_Layer: 0
+  m_Name: KittenTail2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987077}
+  m_LocalRotation: {x: -0.0000000067165558, y: 0.000000013003105, z: -0.1197578, w: 0.99280316}
+  m_LocalPosition: {x: -0.072768725, y: 0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276903}
+  m_Father: {fileID: 6251374826673276837}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000106485, y: -0.0000048340653, z: -9.110655}
+--- !u!1 &6251374826672987079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276903}
+  m_Layer: 0
+  m_Name: KittenTail3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987079}
+  m_LocalRotation: {x: 0.000000040824425, y: -0.00000003511707, z: -0.081137136, w: 0.99670297}
+  m_LocalPosition: {x: -0.0727687, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276905}
+  m_Father: {fileID: 6251374826673276901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000004363625, y: 0.0000013832841, z: -5.406144}
+--- !u!1 &6251374826672987081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276905}
+  m_Layer: 0
+  m_Name: KittenTail4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987081}
+  m_LocalRotation: {x: 0.000000031170277, y: -0.00000005418936, z: -0.06493003, w: 0.9978898}
+  m_LocalPosition: {x: -0.0727687, y: -0.000000038146972, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276907}
+  m_Father: {fileID: 6251374826673276903}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000045931574, y: -0.000011355747, z: -3.3057504}
+--- !u!1 &6251374826672987083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276907}
+  m_Layer: 0
+  m_Name: KittenTail5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987083}
+  m_LocalRotation: {x: 0.000000014588817, y: -0.0000000019718995, z: -0.055884648,
+    w: 0.9984372}
+  m_LocalPosition: {x: -0.07276874, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276909}
+  m_Father: {fileID: 6251374826673276905}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000006334614, y: 0.000006334469, z: -1.6267939}
+--- !u!1 &6251374826672987085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276909}
+  m_Layer: 0
+  m_Name: KittenTail6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987085}
+  m_LocalRotation: {x: 0.0000000025535378, y: 0.0000000010146882, z: -0.09999218,
+    w: 0.99498826}
+  m_LocalPosition: {x: -0.072768666, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276911}
+  m_Father: {fileID: 6251374826673276907}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000022953748, y: 0.0000016056497, z: -4.763282}
+--- !u!1 &6251374826672987087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276911}
+  m_Layer: 0
+  m_Name: KittenTail7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987087}
+  m_LocalRotation: {x: 0.000000010362438, y: 0.000000023867656, z: -0.10197027, w: 0.99478745}
+  m_LocalPosition: {x: -0.0727687, y: -0.000000019073486, z: 1.8189894e-14}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276909}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000044695935, y: -0.000002532623, z: -5.59514}
+--- !u!1 &6251374826672987089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276917}
+  m_Layer: 0
+  m_Name: KittenEarR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987089}
+  m_LocalRotation: {x: 0.06399032, y: -0.3198839, z: 0.67703265, w: 0.6597017}
+  m_LocalPosition: {x: 0.01805786, y: -0.02623764, z: -0.07146164}
+  m_LocalScale: {x: 0.99999976, y: 0.9999998, z: 0.9999998}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276913}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 30.97729, y: -22.905094, z: 87.74299}
+--- !u!1 &6251374826672987091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276919}
+  m_Layer: 0
+  m_Name: KittenEyeL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987091}
+  m_LocalRotation: {x: 0.9727161, y: 0.23199882, z: 0.000000034289684, w: 0.00000012871473}
+  m_LocalPosition: {x: -0.08233276, y: 0.0067891693, z: 0.050317477}
+  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.99999976}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276913}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.0000130743065, y: 179.99998, z: 153.17044}
+--- !u!1 &6251374826672987093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276921}
+  m_Layer: 0
+  m_Name: KittenEyeR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987093}
+  m_LocalRotation: {x: 0.9727161, y: 0.23199882, z: 0.00000010870951, w: -0.000000025927891}
+  m_LocalPosition: {x: -0.0823328, y: 0.0067891693, z: -0.050317466}
+  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.99999976}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276913}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -0.0000067315295, y: 179.99998, z: 153.17044}
+--- !u!1 &6251374826672987095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276923}
+  m_Layer: 0
+  m_Name: KittenJaw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987095}
+  m_LocalRotation: {x: -0.000000037552002, y: -0.000000020022469, z: 0.08485427, w: 0.9963934}
+  m_LocalPosition: {x: -0.073028795, y: 0.09325302, z: -0.000000028610229}
+  m_LocalScale: {x: 0.9999999, y: 0.99999976, z: 0.99999976}
+  m_Children: []
+  m_Father: {fileID: 6251374826673276913}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -0.00000041737303, y: -0.0000026162384, z: 9.735286}
+--- !u!1 &6251374826672987097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276867}
+  m_Layer: 0
+  m_Name: KittenRLegShoulderblade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987097}
+  m_LocalRotation: {x: 0.9010193, y: -0.38150126, z: 0.06696348, w: 0.1952868}
+  m_LocalPosition: {x: 0.05462776, y: -0.004945564, z: -0.040628996}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276925}
+  m_Father: {fileID: 6251374826673276893}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 23.766333, y: -178.22588, z: -133.73}
+--- !u!1 &6251374826672987099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276925}
+  m_Layer: 0
+  m_Name: KittenRLeg1 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987099}
+  m_LocalRotation: {x: 0.01522235, y: -0.2570412, z: 0.72182494, w: 0.64239156}
+  m_LocalPosition: {x: -0.17409122, y: 0, z: 0.000000076293944}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276927}
+  m_Father: {fileID: 6251374826673276867}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 22.689543, y: -23.068483, z: 93.45815}
+--- !u!1 &6251374826672987101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276927}
+  m_Layer: 0
+  m_Name: KittenRLeg2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987101}
+  m_LocalRotation: {x: -0.007251451, y: 0.0046441625, z: -0.21629691, w: 0.9762897}
+  m_LocalPosition: {x: -0.19724025, y: -0.000000019073486, z: 0.000000038146972}
+  m_LocalScale: {x: 0.99999994, y: 0.9999998, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276897}
+  m_Father: {fileID: 6251374826673276925}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.4883402, y: 1.5378019, z: -32.830124}
+--- !u!1 &6251374826672987103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6251374826673276897}
+  m_Layer: 0
+  m_Name: KittenRLegPalm 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6251374826673276897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251374826672987103}
+  m_LocalRotation: {x: 0.019132597, y: 0.08530208, z: -0.29680926, w: 0.95092684}
+  m_LocalPosition: {x: -0.153736, y: 0, z: 0.0000000047683715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6251374826673276899}
+  m_Father: {fileID: 6251374826673276927}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 4.992439, y: 8.710912, z: -34.28854}

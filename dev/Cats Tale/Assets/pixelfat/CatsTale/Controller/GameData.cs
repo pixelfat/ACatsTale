@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace pixelfat.CatsTale
@@ -64,7 +65,7 @@ namespace pixelfat.CatsTale
             List<Move> moves = new List<Move>();
 
             int x = 0, y = 0;
-            Move.Type type = Move.Type.HOP;
+            Move.Type type = Move.Type.JUMP;
             for (int moveIndex = 0; moveIndex < moveCount; moveIndex++)
             {
 
@@ -97,7 +98,7 @@ namespace pixelfat.CatsTale
                 }else
                 {
 
-                    int dist = type == Move.Type.HOP ? 2 : 1;
+                    int dist = type == Move.Type.JUMP ? 2 : 1;
 
                     switch (dir)
                     {
@@ -147,9 +148,6 @@ namespace pixelfat.CatsTale
 
     }
 
-    /// <summary>
-    /// Basic serialisable position
-    /// </summary>
     public class Position
     {
 
@@ -173,7 +171,9 @@ namespace pixelfat.CatsTale
 
         public delegate void BoardDataEvent();
         public delegate void TileEvent(Tile t);
+        [JsonIgnore]
         public BoardDataEvent OnStateChanged, OnPlayerMove;
+        [JsonIgnore]
         public TileEvent OnTileRemoved, OnTileAdded, OnTileUpdated;
 
         public enum State
@@ -214,7 +214,7 @@ namespace pixelfat.CatsTale
 
             Position to = new Position(0, 0);
 
-            int dist = type == Move.Type.HOP ? 2 : 1;
+            int dist = type == Move.Type.JUMP ? 2 : 1;
 
             switch (direction)
             {
@@ -263,7 +263,6 @@ namespace pixelfat.CatsTale
                 Debug.Log("Player jumped to an empty position.");
                 state = State.FAILED;
                 OnStateChanged?.Invoke();
-                return;
 
             }
             else if (GetTiles().Length == 1)
@@ -271,12 +270,19 @@ namespace pixelfat.CatsTale
                 {
                     state = State.COMPLETED;
                     OnStateChanged?.Invoke();
-                    return;
                 }
 
-            Debug.Log($"New player position: {playerPos} {toTile.GetType()}");
+            if(toTile != null)
+                Debug.Log($"New player position: {playerPos} {toTile.GetType()}");
 
             OnPlayerMove?.Invoke();
+
+        }
+
+        public string ToJson()
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
 
         }
 
@@ -415,8 +421,8 @@ namespace pixelfat.CatsTale
 
             //START,
 
-            STEP,
-            HOP, 
+            HOP,
+            JUMP, 
             TP
 
             //END

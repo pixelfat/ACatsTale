@@ -24,11 +24,11 @@ public class TileViewBase : MonoBehaviour
 
         board.OnTileUpdated += HandleTileUpdated;
 
-        transform.position = GetPosition();
+        transform.position = GetPosition(board, tile);
 
     }
 
-    private Vector3 GetPosition()
+    private static Vector3 GetPosition(BoardData board, Tile tile)
     {
 
         Vector3 pos = board.GetTilePosition(tile);
@@ -46,11 +46,11 @@ public class TileViewBase : MonoBehaviour
         if (tileUpdated != tile)
             return;
 
-        if(GetPosition() != transform.position)
+        if(GetPosition(board, tile) != transform.position)
         {
 
             Debug.Log("Tile moved.");
-            transform.position = GetPosition();
+            transform.position = GetPosition(board, tile);
 
         }
 
