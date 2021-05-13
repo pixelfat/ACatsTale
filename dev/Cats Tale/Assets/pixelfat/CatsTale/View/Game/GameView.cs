@@ -15,25 +15,34 @@ namespace pixelfat.CatsTale
 
         public GameCamera cam;
         public PlayerView player;
+
         public void Set(GameData gameData)
         {
+
+            Clear();
+
+            this.gameData = gameData;
 
             if (tileLib == null)
                 LoadResources();
 
-            if(cam == null)
+            if (cam == null)
+            {
                 cam = new GameObject("Camera").AddComponent<GameCamera>();
+                cam.transform.SetParent(transform);
+            }
 
             if (player == null)
             {
                 player = new GameObject("Player").AddComponent<PlayerView>();
-                player.gameData = gameData;
+                player.transform.SetParent(transform);
                 player.OnEndMove += HandlePlayerMoved;
             }
 
-            cam.gameData = gameData;
-
             this.gameData = gameData;
+            player.gameData = gameData;
+            cam.gameData = gameData;
+            
             gameData.Board.OnTileRemoved += HandleTileRemoved;
 
             foreach (Tile t in gameData.Board.GetTiles())
@@ -44,10 +53,25 @@ namespace pixelfat.CatsTale
                 if(tileView != null)
                 {
                     tileView.Set(gameData.Board, t);
+                    tileView.transform.SetParent(transform);
                     tileViews.Add(t, tileView);
                 }
 
             }
+
+        }
+
+        public void Clear()
+        {
+
+            foreach (Tile tile in tileViews.Keys)
+            {
+                tileViews[tile].RemoveFromPlay();
+                tileViews.Remove(tile);
+
+            }
+
+            tileViews = new Dictionary<Tile, TileViewBase>();
 
         }
 
@@ -77,20 +101,6 @@ namespace pixelfat.CatsTale
 
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        private Move.Type moveType;
-        private Move.Direction moveDirection;
         private void OnGUI()
         {
 

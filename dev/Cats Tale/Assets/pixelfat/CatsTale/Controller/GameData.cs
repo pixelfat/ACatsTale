@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,12 @@ namespace pixelfat.CatsTale
 
         public BoardData Board { get; }
 
+        [JsonConstructor]
+        public GameData(BoardData board)
+        {
+            this.Board = board;
+        }
+        
         public GameData(int moveCount)
         {
 
@@ -18,16 +25,17 @@ namespace pixelfat.CatsTale
 
         }
 
-        //public GameData GenerateNew(
-        //    int moveCount,
-        //    float stepWeight, 
-        //    int hopWeight,
-        //    int teleportWeight
-        //    )
-        //{
+
+            //public GameData GenerateNew(
+            //    int moveCount,
+            //    float stepWeight, 
+            //    int hopWeight,
+            //    int teleportWeight
+            //    )
+            //{
 
 
-        //}
+            //}
 
         public BoardData GenerateBoardData(Move[] moves)
         {
@@ -80,7 +88,7 @@ namespace pixelfat.CatsTale
 
                 float stepChance = 1;
                 float hopChance = .5f;
-                float tpChance = moveIndex == 0 || type == Move.Type.TP  ? 0  : .1f; // no chance if it's the first (start) move or the prv move was a tp
+                float tpChance = moveIndex == 0 || type == Move.Type.TP  ? 0  : .91f; // no chance if it's the first (start) move or the prv move was a tp
 
                 weights = new float[] { stepChance, hopChance, tpChance };
 
@@ -91,8 +99,9 @@ namespace pixelfat.CatsTale
                 if(type == Move.Type.TP)
                 {
 
-                    int distX = (int)(Random.value * Mathf.Sqrt(moveCount)) + 3;
-                    int distY = (int)(Random.value * Mathf.Sqrt(moveCount)) + 3;
+                    // make this deterministic
+                    int distX = (int)(UnityEngine.Random.value * Mathf.Sqrt(moveCount)) + 3;
+                    int distY = (int)(UnityEngine.Random.value * Mathf.Sqrt(moveCount)) + 3;
                     to = new Position(x + distX, y + distY); 
 
                 }else
@@ -193,6 +202,15 @@ namespace pixelfat.CatsTale
         public Position playerPos = new Position(0, 0);
         public State state = State.START;
 
+        [JsonConstructor]
+        public BoardData(Dictionary<int, Dictionary<int, List<Tile>>> tiles, Move[] solution, Position playerPosition, int state)
+        {
+            this.tiles = tiles;
+            this.solution = solution;
+            this.playerPos = playerPosition;
+            this.state = (State)state;
+        }
+
         public BoardData(Move[] moves)
         {
 
@@ -239,7 +257,6 @@ namespace pixelfat.CatsTale
                 return;
             }
 
-            // remove tile
             Tile fromTile = GetTileAt(playerPos);
             Tile toTile = GetTileAt(to);
 
@@ -252,7 +269,7 @@ namespace pixelfat.CatsTale
                 Remove(toTile);
                 playerPos = ((TeleportTile)toTile).to;
                 toTile = GetTileAt(playerPos);
-                Debug.Log("Teleport tile.");
+                Debug.Log($"<color=magenta>Teleport tile.</color>");
             }
             else
                 playerPos =  to;
@@ -265,11 +282,18 @@ namespace pixelfat.CatsTale
                 OnStateChanged?.Invoke();
 
             }
+
             else if (GetTiles().Length == 1)
                 if (toTile.type == Tile.TileType.END)
                 {
                     state = State.COMPLETED;
                     OnStateChanged?.Invoke();
+                    Debug.Log($"<color=green>Stage Completed.</color>");
+                } else
+                {
+                    state = State.COMPLETED;
+                    OnStateChanged?.Invoke();
+                    Debug.Log($"<color=yellow>Stage Completed [NOT END TILE].</color>");
                 }
 
             if(toTile != null)
@@ -282,7 +306,25 @@ namespace pixelfat.CatsTale
         public string ToJson()
         {
 
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            { 
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            return JsonConvert.SerializeObject(this, settings);
+
+        }
+
+        public static BoardData FromJson(string json)
+        {
+
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            return JsonConvert.DeserializeObject<BoardData>(json, settings);
+
 
         }
 
@@ -479,13 +521,22 @@ namespace pixelfat.CatsTale
     public class TeleportTile : Tile
     {
 
-        public readonly Position to;
+        public Position to;
 
         public TeleportTile(int x, int y, int toX, int toY) : base(x, y)
         {
 
             to = new Position(toX, toY);
             type = TileType.TELEPORT;
+
+        }
+
+        [JsonConstructor]
+        private TeleportTile(Position position, Position to) : base(position.x, position.y)
+        {
+
+            this.to = to;
+            this.type = TileType.TELEPORT;
 
         }
 
@@ -505,12 +556,23 @@ namespace pixelfat.CatsTale
         }
 
         public Position position;
+
         public TileType type = TileType.NORMAL;
 
         public Tile(int x, int y)
         {
 
             this.position = new Position(x, y);
+            type = TileType.NORMAL;
+
+        }
+
+        [JsonConstructor]
+        private Tile(Position position)
+        {
+
+            this.position = position;
+            this.type = TileType.NORMAL;
 
         }
 

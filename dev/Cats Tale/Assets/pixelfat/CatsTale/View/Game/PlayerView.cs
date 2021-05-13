@@ -14,6 +14,7 @@ public class PlayerView : MonoBehaviour
     private Animator animator;
     private bool isTurning = false, isJumping = false;
     private Move currentMove;
+
     public void TurnLeft()
     {
 
@@ -51,16 +52,13 @@ public class PlayerView : MonoBehaviour
     public void DoMove(Move.Type moveType)
     {
 
+        Debug.Log("Move: " + moveType);
+
         switch (moveType)
         {
-            case Move.Type.HOP:
-                animator.Play("Hop");
-                break;
-            case Move.Type.JUMP:
-                animator.Play("Jump");
-                break;
-            case Move.Type.TP:
-                return;
+            case Move.Type.HOP: animator.Play("Hop"); break;
+            case Move.Type.JUMP: animator.Play("Jump"); break;
+            case Move.Type.TP: return;
         }
 
         isJumping = true;
@@ -70,11 +68,18 @@ public class PlayerView : MonoBehaviour
 
         // TODO: - Teleport FX
         if (nextTile != null)
+        {
             if (nextTile.type == Tile.TileType.TELEPORT)
             {
                 // to-pos is stored in tile view
                 Debug.Log("DO TELEPORT FX !!!");
             }
+        }
+        else
+        {
+            animator.Play("Refuse");
+            return;
+        }
 
         currentMove = new Move(0, facing, moveType, gameData.Board.playerPos, nextPos);
 
@@ -93,10 +98,10 @@ public class PlayerView : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void LateUpdate()
     {
 
-        UpdateState();
+        UpdateState(); // has to be in late update!
         
     }
 
@@ -105,62 +110,55 @@ public class PlayerView : MonoBehaviour
 
         bool isIdle = animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 2");
 
-        if (isIdle)
+        if (!isIdle)
+            return;
+
+        if (isJumping)
         {
 
-            if (isJumping)
-            {
+            isJumping = false;
+            Debug.Log("Move anim ended:" + currentMove);
 
-                isJumping = false;
-                Debug.Log("Move anim ended:" + currentMove);
+            if (currentMove != null)
+                OnEndMove?.Invoke(currentMove);
 
-                if (currentMove != null)
-                    OnEndMove?.Invoke(currentMove);
+            currentMove = null;
 
-                currentMove = null;
-
-                Vector3 pos = GetPlayerPosition(gameData.Board);
-                transform.position = pos;
-                animator.transform.localPosition = Vector3.zero;
-
-            }
-
-            if (isTurning)
-            {
-
-                isTurning = false;
-                Debug.Log("Turn anim ended:" + currentMove);
-
-                Vector3 pos = GetPlayerPosition(gameData.Board);
-                transform.position = pos;
-                //animator.transform.localPosition = Vector3.zero;
-
-            }
-
-                if (Input.GetKeyDown(KeyCode.A))
-                TurnLeft();
-
-            if (Input.GetKeyDown(KeyCode.D))
-                TurnRight();
-
-            if (Input.GetKeyDown(KeyCode.W))
-                DoMove(Move.Type.JUMP);
-
-            if (Input.GetKeyDown(KeyCode.S))
-                DoMove(Move.Type.HOP);
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                animator.Play("Tail Flick");
-
-
-        }
-        else
-        {
-
-
+            Vector3 pos = GetPlayerPosition(gameData.Board);
+            transform.position = pos;
+            animator.transform.localPosition = Vector3.zero;
 
         }
 
+        if (isTurning)
+        {
+
+            isTurning = false;
+            Debug.Log("Turn anim ended:" + currentMove);
+
+            Vector3 pos = GetPlayerPosition(gameData.Board);
+            transform.position = pos;
+            //animator.transform.localPosition = Vector3.zero;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+            TurnLeft();
+
+        if (Input.GetKeyDown(KeyCode.D))
+            TurnRight();
+
+        if (Input.GetKeyDown(KeyCode.W))
+            DoMove(Move.Type.JUMP);
+
+        if (Input.GetKeyDown(KeyCode.S))
+            DoMove(Move.Type.HOP);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            animator.Play("Tail Flick");
+
+        if (Input.GetKeyDown(KeyCode.Z))
+            animator.Play("Refuse");
     }
 
     public static Vector3 GetPlayerPosition(BoardData board)

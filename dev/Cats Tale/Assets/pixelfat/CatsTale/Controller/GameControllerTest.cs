@@ -1,7 +1,16 @@
-﻿using pixelfat.CatsTale;
+﻿using Newtonsoft.Json;
+using pixelfat.CatsTale;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// First levels are only 2d
+/// ...then 2d with teleports?
+/// ...then 2d with traps?
+/// .. then 3d
+/// .. then 3d with teleports?
+/// ...then 3d with traps?
+/// </summary>
 public class GameControllerTest : MonoBehaviour
 {
     public bool doNextMove = false;
@@ -16,11 +25,21 @@ public class GameControllerTest : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        gameData = new GameData(59);
+        
+        gameData = new GameData(10);
+
+        string json = gameData.Board.ToJson();
+        Debug.Log($"{json}");
+
+        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+        BoardData fromjson = Newtonsoft.Json.JsonConvert.DeserializeObject<BoardData>(json, settings);
+
+        gameData = new GameData(fromjson);
+        string tojson = gameData.Board.ToJson();
+        Debug.Log($"{tojson}");
 
         GameView view = gameObject.AddComponent<GameView>();
         view.Set(gameData);
-
     }
 
     // Update is called once per frame
@@ -46,7 +65,7 @@ public class GameControllerTest : MonoBehaviour
 
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
 
         if (gameData == null)

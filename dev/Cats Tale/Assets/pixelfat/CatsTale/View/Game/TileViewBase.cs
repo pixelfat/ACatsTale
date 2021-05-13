@@ -38,6 +38,7 @@ public class TileViewBase : MonoBehaviour
         pos.z *= lateralSpacing;
 
         return pos;
+
     }
 
     private void HandleTileUpdated(Tile tileUpdated)
@@ -55,6 +56,5 @@ public class TileViewBase : MonoBehaviour
         }
 
     }
-
 
 }
