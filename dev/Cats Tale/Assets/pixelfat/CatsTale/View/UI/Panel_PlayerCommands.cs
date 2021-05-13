@@ -29,6 +29,8 @@ public class Panel_PlayerCommands : ViewPanel
         Button_Reset,
         Button_Settings;
 
+    public TMPro.TMP_Text Text_TilesRemaining;
+
     protected override void Start()
     {
 

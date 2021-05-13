@@ -31,7 +31,15 @@ public class ViewState_Arcade : ViewState
         gameView = new GameObject("Game").AddComponent<GameView>();
         gameView.gameObject.transform.SetParent(transform);
         gameView.Set(gameData);
+        gameData.Board.OnPlayerMove += HandlePlayerMoved;
 
+        HandlePlayerMoved();
+
+    }
+
+    private void HandlePlayerMoved()
+    {
+        playerControls.Text_TilesRemaining.text = $"{gameData.Board.GetTiles().Length - 1} / {gameData.Board.solution.Length}";
     }
 
     protected override void Init()

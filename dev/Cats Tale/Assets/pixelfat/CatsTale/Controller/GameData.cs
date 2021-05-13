@@ -51,7 +51,7 @@ namespace pixelfat.CatsTale
 
                 Tile newTile = newTile = new Tile(moves[i].from.x, moves[i].from.y);
 
-                if (i < moves.Length - 1)
+                if (i < moves.Length)
                     if (moves[i].type == Move.Type.TP)
                         newTile = new TeleportTile(moves[i].from.x, moves[i].from.y, moves[i].to.x, moves[i].to.y);
 
@@ -88,7 +88,7 @@ namespace pixelfat.CatsTale
 
                 float stepChance = 1;
                 float hopChance = .5f;
-                float tpChance = moveIndex == 0 || type == Move.Type.TP  ? 0  : .91f; // no chance if it's the first (start) move or the prv move was a tp
+                float tpChance = moveIndex == 0 || moveIndex > moveCount - 2 || type == Move.Type.TP  ? 0  : .1f; // no chance if it's the first (start) move or the prv move was a tp
 
                 weights = new float[] { stepChance, hopChance, tpChance };
 
@@ -180,6 +180,7 @@ namespace pixelfat.CatsTale
 
         public delegate void BoardDataEvent();
         public delegate void TileEvent(Tile t);
+
         [JsonIgnore]
         public BoardDataEvent OnStateChanged, OnPlayerMove;
         [JsonIgnore]
@@ -243,12 +244,13 @@ namespace pixelfat.CatsTale
                 case Move.Direction.WEST: to = new Position(playerPos.x - dist, playerPos.y); break;
 
             }
-
+            Debug.Log("----------> OnStateChanged ?");
             // update state
             if (state == State.START)
             {
                 state = State.IN_PLAY;
                 OnStateChanged?.Invoke();
+                Debug.Log("----------> OnStateChanged 1");
             }
 
             if (state != State.IN_PLAY)

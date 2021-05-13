@@ -142,7 +142,74 @@ namespace pixelfat.CatsTale
                 Debug.Log(gameData.Board.ToJson());
 
         }
+        private void OnDrawGizmos()
+        {
 
+            if (gameData == null)
+                return;
+
+            Vector3 posScale = new Vector3(TileViewBase.lateralSpacing, TileViewBase.verticalSpacing, TileViewBase.lateralSpacing);
+
+            foreach (Tile t in gameData.Board.GetTiles())
+            {
+
+                float depth = gameData.Board.GetTileDepth(t);
+
+                if (depth == -1)
+                    Debug.LogError("??");
+
+                Vector3 pos = gameData.Board.GetTilePosition(t);
+
+                pos.x *= TileViewBase.lateralSpacing;
+                pos.y *= TileViewBase.verticalSpacing;
+                pos.z *= TileViewBase.lateralSpacing;
+
+                Vector3 size = new Vector3(
+                   1f,
+                   .1f,
+                   1f);
+
+                Color32 tileColor = Color.blue;
+
+                if (t.type == Tile.TileType.START)
+                    tileColor = Color.green;
+
+                if (t.type == Tile.TileType.END)
+                    tileColor = Color.yellow;
+
+                if (t.type == Tile.TileType.TELEPORT)
+                {
+                    tileColor = Color.magenta;
+
+                    Position toPos = ((TeleportTile)t).to;
+
+                    Vector3 toPosV3 = new Vector3(
+                       toPos.x,
+                       0 - depth,
+                       toPos.y);
+
+                    toPosV3.x *= TileViewBase.lateralSpacing;
+                    toPosV3.y *= TileViewBase.verticalSpacing;
+                    toPosV3.z *= TileViewBase.lateralSpacing;
+
+                    Gizmos.DrawLine(pos, toPosV3);
+
+                }
+
+                Gizmos.color = tileColor;
+
+                Gizmos.DrawWireCube(pos, size);
+                Gizmos.color = Color.white;
+            }
+
+            Vector3 playerPos = new Vector3(
+                gameData.Board.playerPos.x * TileViewBase.lateralSpacing,
+                0,
+                gameData.Board.playerPos.y * TileViewBase.lateralSpacing);
+
+            Gizmos.DrawWireSphere(playerPos, 1f / 2f);
+
+        }
     }
 
 }

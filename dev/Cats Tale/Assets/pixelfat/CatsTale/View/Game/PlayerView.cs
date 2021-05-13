@@ -52,6 +52,9 @@ public class PlayerView : MonoBehaviour
     public void DoMove(Move.Type moveType)
     {
 
+        if (!IsIdle())
+            return;
+
         Debug.Log("Move: " + moveType);
 
         switch (moveType)
@@ -78,6 +81,7 @@ public class PlayerView : MonoBehaviour
         else
         {
             animator.Play("Refuse");
+            Debug.Log($"{gameData.Board.playerPos} {nextPos} {nextTile} {facing} {moveType}");
             return;
         }
 
@@ -90,11 +94,12 @@ public class PlayerView : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+
         GameObject catResource =  Resources.Load<GameObject>("Cat");
         GameObject catInstance = Instantiate<GameObject>(catResource);
-        catInstance.transform.SetParent(transform);
         animator = catInstance.GetComponent<Animator>();
+        catInstance.transform.SetParent(transform);
+
     }
 
     // Update is called once per frame
@@ -105,12 +110,15 @@ public class PlayerView : MonoBehaviour
         
     }
 
+    private bool IsIdle()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 2");
+
+    }
     private void UpdateState() 
     {
 
-        bool isIdle = animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 2");
-
-        if (!isIdle)
+        if (!IsIdle())
             return;
 
         if (isJumping)
@@ -187,7 +195,6 @@ public class PlayerView : MonoBehaviour
             case Move.Direction.EAST: return new Position(pos.x + dist, pos.y); 
             case Move.Direction.WEST: return new Position(pos.x - dist, pos.y);
 
-               
         }
 
         return null;

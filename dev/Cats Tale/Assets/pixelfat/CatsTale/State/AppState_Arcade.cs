@@ -11,6 +11,8 @@ public class AppState_Arcade : AppState
     public GameData gameData;
     private string _serializedGameData;
 
+    private int level = 5;
+
     protected override void Init()
     {
 
@@ -24,8 +26,31 @@ public class AppState_Arcade : AppState
         _serializedGameData = newGameData.Board.ToJson();
 
         gameData = new GameData(BoardData.FromJson(_serializedGameData));
+        gameData.Board.OnStateChanged += HandleGameDataStateChange;
 
         viewState.Set(gameData);
+
+    }
+
+    private void StartLevel()
+    {
+
+        gameData = new GameData(BoardData.FromJson(_serializedGameData));
+        gameData.Board.OnStateChanged += HandleGameDataStateChange;
+
+        viewState.Set(gameData);
+
+    }
+
+    private void StartNextLevel()
+    {
+
+        level++;
+
+        GameData newGameData = new GameData(level);
+        _serializedGameData = newGameData.Board.ToJson();
+
+        StartLevel();
 
     }
 
@@ -37,10 +62,7 @@ public class AppState_Arcade : AppState
 
         Debug.Log("Resetting game data: " + _serializedGameData);
 
-        gameData = new GameData(BoardData.FromJson(_serializedGameData));
-        gameData.Board.OnStateChanged += HandleGameDataStateChange;
-
-        viewState.Set(gameData);
+        StartLevel();
 
     }
 
@@ -53,13 +75,16 @@ public class AppState_Arcade : AppState
 
     private void HandleGameDataStateChange()
     {
+
+        Debug.Log("State change:" + gameData.Board.state);
+
         switch (gameData.Board.state)
         {
             case BoardData.State.START: break;
             case BoardData.State.IN_PLAY: break;
             case BoardData.State.FAILED: break;
             case BoardData.State.POSSIBLE_COMPLETION: break;
-            case BoardData.State.COMPLETED: Debug.Log("LEVEL COMPLETE!"); break;
+            case BoardData.State.COMPLETED: Debug.Log("LEVEL COMPLETE!"); StartNextLevel(); break;
         }
     }
 
