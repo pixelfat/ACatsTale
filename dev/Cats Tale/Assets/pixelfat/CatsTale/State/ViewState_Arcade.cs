@@ -13,7 +13,7 @@ public class ViewState_Arcade : ViewState
     private GameView gameView;
     private GameData gameData;
 
-    public void Set(GameData data)
+    public void Set(GameData gameData)
     {
 
         Debug.Log("Setting up Arcade game view.");
@@ -26,12 +26,12 @@ public class ViewState_Arcade : ViewState
 
         }
 
-        this.gameData = data;
+        this.gameData = gameData;
 
         gameView = new GameObject("Game").AddComponent<GameView>();
         gameView.gameObject.transform.SetParent(transform);
         gameView.Set(gameData);
-        gameData.Board.OnPlayerMove += HandlePlayerMoved;
+        gameData.OnPlayerMove += HandlePlayerMoved;
 
         HandlePlayerMoved();
 
@@ -39,7 +39,7 @@ public class ViewState_Arcade : ViewState
 
     private void HandlePlayerMoved()
     {
-        playerControls.Text_TilesRemaining.text = $"{gameData.Board.GetTiles().Length - 1} / {gameData.Board.solution.Length}";
+        playerControls.Text_TilesRemaining.text = $"{gameData.GetTiles().Length - 1} / {gameData.solution.Length}";
     }
 
     protected override void Init()
@@ -80,7 +80,7 @@ public class ViewState_Arcade : ViewState
     private void HandleViewSettingsSelected()
     {
         // show settings UI
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
 }

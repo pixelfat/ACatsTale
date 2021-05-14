@@ -1,158 +1,158 @@
-﻿using Newtonsoft.Json;
-using pixelfat.CatsTale;
-using UnityEditor;
-using UnityEngine;
+﻿//using Newtonsoft.Json;
+//using pixelfat.CatsTale;
+//using UnityEditor;
+//using UnityEngine;
 
-/// <summary>
-/// First levels are only 2d
-/// ...then 2d with teleports?
-/// ...then 2d with traps?
-/// .. then 3d
-/// .. then 3d with teleports?
-/// ...then 3d with traps?
-/// </summary>
-public class GameControllerTest : MonoBehaviour
-{
-    public bool doNextMove = false;
+///// <summary>
+///// First levels are only 2d
+///// ...then 2d with teleports?
+///// ...then 2d with traps?
+///// .. then 3d
+///// .. then 3d with teleports?
+///// ...then 3d with traps?
+///// </summary>
+//public class GameControllerTest : MonoBehaviour
+//{
+//    public bool doNextMove = false;
 
-    public float tileSize = .8f;
-    public float lateralSpacing = 1f;
-    public float verticalSpacing = .25f;
+//    public float tileSize = .8f;
+//    public float lateralSpacing = 1f;
+//    public float verticalSpacing = .25f;
 
-    public GameData gameData;
-    public int moveIndex = 0;
+//    public GameData gameData;
+//    public int moveIndex = 0;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
+//    // Start is called before the first frame update
+//    private void Start()
+//    {
         
-        gameData = new GameData(10);
+//        gameData = new GameData(10);
 
-        string json = gameData.Board.ToJson();
-        Debug.Log($"{json}");
+//        string json = gameData.CurrentGame.ToJson();
+//        Debug.Log($"{json}");
 
-        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-        BoardData fromjson = Newtonsoft.Json.JsonConvert.DeserializeObject<BoardData>(json, settings);
+//        JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+//        BoardData fromjson = Newtonsoft.Json.JsonConvert.DeserializeObject<BoardData>(json, settings);
 
-        gameData = new GameData(fromjson);
-        string tojson = gameData.Board.ToJson();
-        Debug.Log($"{tojson}");
+//        gameData = new GameData(fromjson);
+//        string tojson = gameData.CurrentGame.ToJson();
+//        Debug.Log($"{tojson}");
 
-        GameView view = gameObject.AddComponent<GameView>();
-        view.Set(gameData);
-    }
+//        GameView view = gameObject.AddComponent<GameView>();
+//        view.Set(gameData);
+//    }
 
-    // Update is called once per frame
-    private void Update()
-    {
+//    // Update is called once per frame
+//    private void Update()
+//    {
 
-        if (doNextMove)
-        {
+//        if (doNextMove)
+//        {
 
-            Debug.Log($"Move #{moveIndex}: {gameData.Board.solution[moveIndex]}");
+//            Debug.Log($"Move #{moveIndex}: {gameData.CurrentGame.solution[moveIndex]}");
 
-            gameData.Board.MovePlayer(gameData.Board.solution[moveIndex].direction, gameData.Board.solution[moveIndex].type);
+//            gameData.CurrentGame.MovePlayer(gameData.CurrentGame.solution[moveIndex].direction, gameData.CurrentGame.solution[moveIndex].type);
 
-            moveIndex++;
+//            moveIndex++;
 
-            if (moveIndex < gameData.Board.solution.Length)
-                if (gameData.Board.solution[moveIndex].type == Move.Type.TP)
-                    moveIndex++;
+//            if (moveIndex < gameData.CurrentGame.solution.Length)
+//                if (gameData.CurrentGame.solution[moveIndex].type == Move.Type.TP)
+//                    moveIndex++;
 
-            doNextMove = false;
+//            doNextMove = false;
 
-        }
+//        }
 
-    }
+//    }
 
-    private void OnDrawGizmos()
-    {
+//    private void OnDrawGizmos()
+//    {
 
-        if (gameData == null)
-            return;
+//        if (gameData == null)
+//            return;
 
-        Vector3 posScale = new Vector3(lateralSpacing, verticalSpacing, lateralSpacing);
+//        Vector3 posScale = new Vector3(lateralSpacing, verticalSpacing, lateralSpacing);
 
-        foreach (Tile t in gameData.Board.GetTiles())
-        {
+//        foreach (Tile t in gameData.CurrentGame.GetTiles())
+//        {
 
-            float depth = gameData.Board.GetTileDepth(t);
+//            float depth = gameData.CurrentGame.GetTileDepth(t);
 
-            if (depth == -1)
-                Debug.LogError("??");
+//            if (depth == -1)
+//                Debug.LogError("??");
 
-            Vector3 pos = gameData.Board.GetTilePosition(t);
+//            Vector3 pos = gameData.CurrentGame.GetTilePosition(t);
 
-            pos.x *= lateralSpacing;
-            pos.y *= verticalSpacing;
-            pos.z *= lateralSpacing;
+//            pos.x *= lateralSpacing;
+//            pos.y *= verticalSpacing;
+//            pos.z *= lateralSpacing;
 
-            Vector3 size = new Vector3(
-               1f * tileSize,
-               .1f * tileSize,
-               1f * tileSize);
+//            Vector3 size = new Vector3(
+//               1f * tileSize,
+//               .1f * tileSize,
+//               1f * tileSize);
 
-            Color32 tileColor = Color.blue;
+//            Color32 tileColor = Color.blue;
 
-            if (t.type == Tile.TileType.START)
-                tileColor = Color.green;
+//            if (t.type == Tile.TileType.START)
+//                tileColor = Color.green;
 
-            if (t.type == Tile.TileType.END)
-                tileColor = Color.yellow;
+//            if (t.type == Tile.TileType.END)
+//                tileColor = Color.yellow;
 
-            if (t.type == Tile.TileType.TELEPORT)
-            {
-                tileColor = Color.magenta;
+//            if (t.type == Tile.TileType.TELEPORT)
+//            {
+//                tileColor = Color.magenta;
 
-                Position toPos = ((TeleportTile)t).to;
+//                Position toPos = ((TeleportTile)t).to;
 
-                Vector3 toPosV3 = new Vector3(
-                   toPos.x,
-                   0 - depth,
-                   toPos.y);
+//                Vector3 toPosV3 = new Vector3(
+//                   toPos.x,
+//                   0 - depth,
+//                   toPos.y);
 
-                toPosV3.x *= lateralSpacing;
-                toPosV3.y *= verticalSpacing;
-                toPosV3.z *= lateralSpacing;
+//                toPosV3.x *= lateralSpacing;
+//                toPosV3.y *= verticalSpacing;
+//                toPosV3.z *= lateralSpacing;
 
-                Gizmos.DrawLine(pos, toPosV3);
+//                Gizmos.DrawLine(pos, toPosV3);
 
-            }
+//            }
 
-            Gizmos.color = tileColor;
+//            Gizmos.color = tileColor;
 
-            Gizmos.DrawWireCube(pos, size);
-            Gizmos.color = Color.white;
-        }
+//            Gizmos.DrawWireCube(pos, size);
+//            Gizmos.color = Color.white;
+//        }
 
-        Vector3 playerPos = new Vector3(
-            gameData.Board.playerPos.x * lateralSpacing,
-            0,
-            gameData.Board.playerPos.y * lateralSpacing);
+//        Vector3 playerPos = new Vector3(
+//            gameData.CurrentGame.playerPos.x * lateralSpacing,
+//            0,
+//            gameData.CurrentGame.playerPos.y * lateralSpacing);
 
-        Gizmos.DrawWireSphere(playerPos, tileSize/2);
+//        Gizmos.DrawWireSphere(playerPos, tileSize/2);
 
-    }
+//    }
 
-    [CustomEditor(typeof(GameControllerTest))]
-    public class GameControllerTestEditor : Editor
-    {
+//    [CustomEditor(typeof(GameControllerTest))]
+//    public class GameControllerTestEditor : Editor
+//    {
 
-        public override void OnInspectorGUI()
-        {
+//        public override void OnInspectorGUI()
+//        {
 
-            GameControllerTest test = (GameControllerTest)target;
+//            GameControllerTest test = (GameControllerTest)target;
 
-            if (test.gameData == null)
-                return;
+//            if (test.gameData == null)
+//                return;
 
-            GUILayout.Label($"Move Index: {test.moveIndex}");
-            if (GUILayout.Button("Next Move"))
-                test.doNextMove = true;
+//            GUILayout.Label($"Move Index: {test.moveIndex}");
+//            if (GUILayout.Button("Next Move"))
+//                test.doNextMove = true;
 
-            GUILayout.Label($"Player Position: {test.gameData.Board.playerPos.x}, {test.gameData.Board.playerPos.y}");
-            GUILayout.Label($"Tiles Remaining: {test.gameData.Board.GetTiles().Length}");
+//            GUILayout.Label($"Player Position: {test.gameData.CurrentGame.playerPos.x}, {test.gameData.CurrentGame.playerPos.y}");
+//            GUILayout.Label($"Tiles Remaining: {test.gameData.CurrentGame.GetTiles().Length}");
 
-        }
-    }
-}
+//        }
+//    }
+//}

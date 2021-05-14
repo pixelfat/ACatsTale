@@ -10,13 +10,16 @@ public class PlayerView : MonoBehaviour
 
     public Move.Direction facing;
 
-    public GameData gameData;
+    public GameData board;
     private Animator animator;
     private bool isTurning = false, isJumping = false;
     private Move currentMove;
 
     public void TurnLeft()
     {
+
+        if (!IsIdle())
+            return;
 
         animator.Play("Left");
 
@@ -34,6 +37,9 @@ public class PlayerView : MonoBehaviour
 
     public void TurnRight()
     {
+
+        if (!IsIdle())
+            return;
 
         animator.Play("Right");
 
@@ -66,8 +72,8 @@ public class PlayerView : MonoBehaviour
 
         isJumping = true;
 
-        Position nextPos = GetNextPosition(facing, moveType, gameData.Board.playerPos);
-        Tile nextTile = gameData.Board.GetTileAt(nextPos);
+        Position nextPos = GetNextPosition(facing, moveType, board.playerPos);
+        Tile nextTile = board.GetTileAt(nextPos);
 
         // TODO: - Teleport FX
         if (nextTile != null)
@@ -81,11 +87,11 @@ public class PlayerView : MonoBehaviour
         else
         {
             animator.Play("Refuse");
-            Debug.Log($"{gameData.Board.playerPos} {nextPos} {nextTile} {facing} {moveType}");
+            Debug.Log($"{board.playerPos}, {nextPos}, {board.GetTileCountAt(nextPos)}, {nextTile}, {facing}, {moveType}");
             return;
         }
 
-        currentMove = new Move(0, facing, moveType, gameData.Board.playerPos, nextPos);
+        currentMove = new Move(0, facing, moveType, board.playerPos, nextPos);
 
         OnStartMove?.Invoke(currentMove);
 
@@ -132,7 +138,7 @@ public class PlayerView : MonoBehaviour
 
             currentMove = null;
 
-            Vector3 pos = GetPlayerPosition(gameData.Board);
+            Vector3 pos = GetPlayerPosition(board);
             transform.position = pos;
             animator.transform.localPosition = Vector3.zero;
 
@@ -144,7 +150,7 @@ public class PlayerView : MonoBehaviour
             isTurning = false;
             Debug.Log("Turn anim ended:" + currentMove);
 
-            Vector3 pos = GetPlayerPosition(gameData.Board);
+            Vector3 pos = GetPlayerPosition(board);
             transform.position = pos;
             //animator.transform.localPosition = Vector3.zero;
 
@@ -169,7 +175,7 @@ public class PlayerView : MonoBehaviour
             animator.Play("Refuse");
     }
 
-    public static Vector3 GetPlayerPosition(BoardData board)
+    public static Vector3 GetPlayerPosition(GameData board)
     {
 
         Vector3 pos = new Vector3(board.playerPos.x, 0, board.playerPos.y);

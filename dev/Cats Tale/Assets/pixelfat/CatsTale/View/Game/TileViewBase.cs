@@ -7,7 +7,7 @@ public class TileViewBase : MonoBehaviour
     public static float lateralSpacing = 1f;
     public static float verticalSpacing = .25f;
 
-    public BoardData board;
+    public GameData board;
 
     public Tile tile;
 
@@ -16,7 +16,7 @@ public class TileViewBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Set(BoardData board, Tile tile)
+    public void Set(GameData board, Tile tile)
     {
 
         this.board = board;
@@ -28,7 +28,7 @@ public class TileViewBase : MonoBehaviour
 
     }
 
-    private static Vector3 GetPosition(BoardData board, Tile tile)
+    private static Vector3 GetPosition(GameData board, Tile tile)
     {
 
         Vector3 pos = board.GetTilePosition(tile);

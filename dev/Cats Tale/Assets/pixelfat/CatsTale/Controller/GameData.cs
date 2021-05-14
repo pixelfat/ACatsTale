@@ -1,46 +1,127 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace pixelfat.CatsTale
 {
 
+    /// <summary>
+    /// saved in either playerprefs or as text file
+    /// </summary>
+    public class PersistentSaveGameData
+    {
+
+        // arcade status
+        public int currentArcadeLvl = 0;
+        public int arcadeRestartsRemaining = 3; // Lives
+        public GameData currentArcadeBoard;
+
+        // story status
+        public int currentStoryLevel;
+        public int pickupsRemaining;
+
+        public static PersistentSaveGameData Persistent { get { return _Persistent; } set { _Persistent = value; Save(); } }
+        private static PersistentSaveGameData _Persistent;
+
+        public static void Load()
+        {
+
+            // use file.io to load json text from file
+            string dir = Application.persistentDataPath;
+            string path = Path.Combine(dir, "SaveGameData.json");
+            
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+            
+            if (!File.Exists(path))
+                File.WriteAllText(path, JsonConvert.SerializeObject(new PersistentSaveGameData(), settings));
+
+            string saveGameDataJson = File.ReadAllText(path);
+
+            PersistentSaveGameData loaded = JsonConvert.DeserializeObject<PersistentSaveGameData>(saveGameDataJson, settings);
+
+            Debug.Log("Persistent data loaded." + path);
+
+            _Persistent = loaded;
+
+        }
+
+        public static void Save()
+        {
+            Save(_Persistent);
+        }
+
+        public static void Save(PersistentSaveGameData data)
+        {
+
+            // use file.io to load json text from file
+            string dir = Application.persistentDataPath;
+            string path = Path.Combine(dir, "SaveGameData.json");
+
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+            string json = JsonConvert.SerializeObject(data, settings);
+            
+            File.WriteAllText(path, json);
+
+            Debug.Log($"Persistent data saved to {path}\n{json}");
+
+        }
+
+    }
+
     public class GameData
     {
 
-        public BoardData Board { get; }
+        public delegate void GameDataEvent();
+        public delegate void TileEvent(Tile t);
 
-        [JsonConstructor]
-        public GameData(BoardData board)
+        [JsonIgnore]
+        public GameDataEvent OnStateChanged, OnPlayerMove;
+        [JsonIgnore]
+        public TileEvent OnTileRemoved, OnTileAdded, OnTileUpdated;
+
+        public enum State
         {
-            this.Board = board;
+
+            START,
+            IN_PLAY,
+            FAILED,
+            POSSIBLE_COMPLETION,
+            COMPLETED
+
         }
-        
-        public GameData(int moveCount)
+
+        public readonly Dictionary<int, Dictionary<int, List<Tile>>> tiles;
+        public readonly Move[] solution;
+
+        public Position playerPos = new Position(0, 0);
+        public State state = State.START;
+
+        public static GameData FromJson(string json)
+        {
+
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            return JsonConvert.DeserializeObject<GameData>(json, settings);
+
+
+        }
+
+        public static GameData GenerateGameData(int moveCount)
         {
 
             Move[] moves = GenerateMoveList(moveCount);
-            Board = GenerateBoardData(moves);
+            return GenerateGameData(moves);
 
         }
 
-
-            //public GameData GenerateNew(
-            //    int moveCount,
-            //    float stepWeight, 
-            //    int hopWeight,
-            //    int teleportWeight
-            //    )
-            //{
-
-
-            //}
-
-        public BoardData GenerateBoardData(Move[] moves)
+        public static GameData GenerateGameData(Move[] moves)
         {
 
-            BoardData boardData = new BoardData(moves);
+            GameData boardData = new GameData(moves);
 
             StartTile startTile = new StartTile(moves[0].from.x, moves[0].from.y);
 
@@ -60,7 +141,7 @@ namespace pixelfat.CatsTale
 
             }
 
-            EndTile endTile = new EndTile(moves[moves.Length-1].to.x, moves[moves.Length-1].to.y);
+            EndTile endTile = new EndTile(moves[moves.Length - 1].to.x, moves[moves.Length - 1].to.y);
             boardData.Add(endTile);
 
             return boardData;
@@ -88,7 +169,7 @@ namespace pixelfat.CatsTale
 
                 float stepChance = 1;
                 float hopChance = .5f;
-                float tpChance = moveIndex == 0 || moveIndex > moveCount - 2 || type == Move.Type.TP  ? 0  : .1f; // no chance if it's the first (start) move or the prv move was a tp
+                float tpChance = moveIndex == 0 || moveIndex > moveCount - 2 || type == Move.Type.TP ? 0 : .91f; // no chance if it's the first (start) move or the prv move was a tp
 
                 weights = new float[] { stepChance, hopChance, tpChance };
 
@@ -96,15 +177,16 @@ namespace pixelfat.CatsTale
 
                 Position to = null;
 
-                if(type == Move.Type.TP)
+                if (type == Move.Type.TP)
                 {
 
                     // make this deterministic
                     int distX = (int)(UnityEngine.Random.value * Mathf.Sqrt(moveCount)) + 3;
                     int distY = (int)(UnityEngine.Random.value * Mathf.Sqrt(moveCount)) + 3;
-                    to = new Position(x + distX, y + distY); 
+                    to = new Position(x + distX, y + distY);
 
-                }else
+                }
+                else
                 {
 
                     int dist = type == Move.Type.JUMP ? 2 : 1;
@@ -155,56 +237,8 @@ namespace pixelfat.CatsTale
 
         }
 
-    }
-
-    public class Position
-    {
-
-        public readonly int x, y;
-
-        public Position(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-
-        public override string ToString()
-        {
-            return $"Position: {x},{y}";
-        }
-
-    }
-
-    public class BoardData
-    {
-
-        public delegate void BoardDataEvent();
-        public delegate void TileEvent(Tile t);
-
-        [JsonIgnore]
-        public BoardDataEvent OnStateChanged, OnPlayerMove;
-        [JsonIgnore]
-        public TileEvent OnTileRemoved, OnTileAdded, OnTileUpdated;
-
-        public enum State
-        {
-
-            START,
-            IN_PLAY,
-            FAILED,
-            POSSIBLE_COMPLETION,
-            COMPLETED
-
-        }
-
-        public readonly Dictionary<int, Dictionary<int, List<Tile>>> tiles;
-        public readonly Move[] solution;
-
-        public Position playerPos = new Position(0, 0);
-        public State state = State.START;
-
         [JsonConstructor]
-        public BoardData(Dictionary<int, Dictionary<int, List<Tile>>> tiles, Move[] solution, Position playerPosition, int state)
+        public GameData(Dictionary<int, Dictionary<int, List<Tile>>> tiles, Move[] solution, Position playerPosition, int state)
         {
             this.tiles = tiles;
             this.solution = solution;
@@ -212,7 +246,7 @@ namespace pixelfat.CatsTale
             this.state = (State)state;
         }
 
-        public BoardData(Move[] moves)
+        public GameData(Move[] moves)
         {
 
             tiles = new Dictionary<int, Dictionary<int, List<Tile>>>();
@@ -220,7 +254,7 @@ namespace pixelfat.CatsTale
 
         }
 
-        public BoardData(Dictionary<int, Dictionary<int, List<Tile>>> data, Move[] solution)
+        public GameData(Dictionary<int, Dictionary<int, List<Tile>>> data, Move[] solution)
         {
 
             this.tiles = new Dictionary<int, Dictionary<int, List<Tile>>>(data);
@@ -266,7 +300,7 @@ namespace pixelfat.CatsTale
                 Remove(fromTile);
 
             // move player 
-            if(toTile != null && toTile.GetType() == typeof(TeleportTile))
+            if (toTile != null && toTile.GetType() == typeof(TeleportTile))
             {
                 Remove(toTile);
                 playerPos = ((TeleportTile)toTile).to;
@@ -274,9 +308,9 @@ namespace pixelfat.CatsTale
                 Debug.Log($"<color=magenta>Teleport tile.</color>");
             }
             else
-                playerPos =  to;
+                playerPos = to;
 
-            if(toTile == null)
+            if (toTile == null)
             {
 
                 Debug.Log("Player jumped to an empty position.");
@@ -291,14 +325,15 @@ namespace pixelfat.CatsTale
                     state = State.COMPLETED;
                     OnStateChanged?.Invoke();
                     Debug.Log($"<color=green>Stage Completed.</color>");
-                } else
+                }
+                else
                 {
                     state = State.COMPLETED;
                     OnStateChanged?.Invoke();
                     Debug.Log($"<color=yellow>Stage Completed [NOT END TILE].</color>");
                 }
 
-            if(toTile != null)
+            if (toTile != null)
                 Debug.Log($"New player position: {playerPos} {toTile.GetType()}");
 
             OnPlayerMove?.Invoke();
@@ -309,24 +344,11 @@ namespace pixelfat.CatsTale
         {
 
             JsonSerializerSettings settings = new JsonSerializerSettings
-            { 
-                TypeNameHandling = TypeNameHandling.Auto
-            };
-
-            return JsonConvert.SerializeObject(this, settings);
-
-        }
-
-        public static BoardData FromJson(string json)
-        {
-
-            JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             };
 
-            return JsonConvert.DeserializeObject<BoardData>(json, settings);
-
+            return JsonConvert.SerializeObject(this, settings);
 
         }
 
@@ -399,7 +421,7 @@ namespace pixelfat.CatsTale
 
         }
 
-        public void Add(Tile tile)
+        private void Add(Tile tile)
         {
 
             if (!tiles.ContainsKey(tile.position.x))
@@ -417,7 +439,7 @@ namespace pixelfat.CatsTale
 
         }
 
-        public bool Remove(Tile tile)
+        private bool Remove(Tile tile)
         {
 
             if (!tiles.ContainsKey(tile.position.x))
@@ -445,6 +467,24 @@ namespace pixelfat.CatsTale
 
             return true;
 
+        }
+
+    }
+
+    public class Position
+    {
+
+        public readonly int x, y;
+
+        public Position(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public override string ToString()
+        {
+            return $"Position: {x},{y}";
         }
 
     }
@@ -497,6 +537,42 @@ namespace pixelfat.CatsTale
 
     }
 
+    public class Tile
+    {
+
+        public enum TileType
+        {
+
+            START,
+            NORMAL,
+            TELEPORT,
+            END
+
+        }
+
+        public Position position;
+
+        public TileType type = TileType.NORMAL;
+
+        public Tile(int x, int y)
+        {
+
+            this.position = new Position(x, y);
+            type = TileType.NORMAL;
+
+        }
+
+        [JsonConstructor]
+        private Tile(Position position)
+        {
+
+            this.position = position;
+            this.type = TileType.NORMAL;
+
+        }
+
+    }
+
     public class StartTile : Tile
     {
         public StartTile(int x, int y) : base(x, y)
@@ -544,40 +620,6 @@ namespace pixelfat.CatsTale
 
     }
 
-    public class Tile
-    {
 
-        public enum TileType
-        {
-
-            START,
-            NORMAL,
-            TELEPORT,
-            END
-
-        }
-
-        public Position position;
-
-        public TileType type = TileType.NORMAL;
-
-        public Tile(int x, int y)
-        {
-
-            this.position = new Position(x, y);
-            type = TileType.NORMAL;
-
-        }
-
-        [JsonConstructor]
-        private Tile(Position position)
-        {
-
-            this.position = position;
-            this.type = TileType.NORMAL;
-
-        }
-
-    }
 
 }

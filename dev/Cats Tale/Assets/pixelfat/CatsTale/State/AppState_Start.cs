@@ -1,3 +1,4 @@
+using pixelfat.CatsTale;
 using Pixelfat.Unity;
 using System;
 
@@ -10,8 +11,9 @@ public class AppState_Start : AppState
     {
         base.Init();
 
-        view = ViewState.Set<ViewState_Start>();
+        PersistentSaveGameData.Load();
 
+        view = ViewState.Set<ViewState_Start>();
         view.OnArcade += HandleAcadeSelected;
 
     }

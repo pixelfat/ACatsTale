@@ -8,13 +8,13 @@ namespace pixelfat.CatsTale
     public class GameView : MonoBehaviour
     {
 
-        public static TileLibrary tileLib;
+        public static GameResources tileLib;
 
-        public GameData gameData;
-        public Dictionary<Tile, TileViewBase> tileViews = new Dictionary<Tile, TileViewBase>();
-
-        public GameCamera cam;
         public PlayerView player;
+
+        private Dictionary<Tile, TileViewBase> tileViews = new Dictionary<Tile, TileViewBase>();
+        private GameCamera cam;
+        private GameData gameData;
 
         public void Set(GameData gameData)
         {
@@ -40,19 +40,19 @@ namespace pixelfat.CatsTale
             }
 
             this.gameData = gameData;
-            player.gameData = gameData;
+            player.board = gameData;
             cam.gameData = gameData;
             
-            gameData.Board.OnTileRemoved += HandleTileRemoved;
+            gameData.OnTileRemoved += HandleTileRemoved;
 
-            foreach (Tile t in gameData.Board.GetTiles())
+            foreach (Tile t in gameData.GetTiles())
             {
 
                 TileViewBase tileView =  tileLib.NewTile(t);
 
                 if(tileView != null)
                 {
-                    tileView.Set(gameData.Board, t);
+                    tileView.Set(gameData, t);
                     tileView.transform.SetParent(transform);
                     tileViews.Add(t, tileView);
                 }
@@ -77,7 +77,7 @@ namespace pixelfat.CatsTale
 
         private void HandlePlayerMoved(Move move)
         {
-            gameData.Board.MovePlayer(move.direction, move.type);
+            gameData.MovePlayer(move.direction, move.type);
         }
 
         private void HandleTileRemoved(Tile t)
@@ -97,7 +97,7 @@ namespace pixelfat.CatsTale
         private static void LoadResources()
         {
 
-            tileLib = Resources.Load<TileLibrary>("Tiles");
+            tileLib = Resources.Load<GameResources>("Tiles");
 
         }
 
@@ -109,7 +109,7 @@ namespace pixelfat.CatsTale
             GUILayout.Space(85);
 
             if (GUILayout.Button("Jump", GUILayout.Height(75), GUILayout.Width(75)))
-                gameData.Board.MovePlayer(cam.facing, Move.Type.JUMP);
+                gameData.MovePlayer(cam.facing, Move.Type.JUMP);
 
             GUILayout.EndHorizontal();
 
@@ -125,7 +125,7 @@ namespace pixelfat.CatsTale
                 }
 
             if (GUILayout.Button("Hop", GUILayout.Height(75), GUILayout.Width(75)))
-                gameData.Board.MovePlayer(cam.facing, Move.Type.HOP);
+                gameData.MovePlayer(cam.facing, Move.Type.HOP);
 
             if (GUILayout.Button("Right", GUILayout.Height(75), GUILayout.Width(75)))
                 switch (cam.facing)
@@ -139,7 +139,7 @@ namespace pixelfat.CatsTale
             GUILayout.EndHorizontal();
 
             if (GUILayout.Button("JSON", GUILayout.Height(75), GUILayout.Width(75)))
-                Debug.Log(gameData.Board.ToJson());
+                Debug.Log(gameData.ToJson());
 
         }
         private void OnDrawGizmos()
@@ -150,15 +150,15 @@ namespace pixelfat.CatsTale
 
             Vector3 posScale = new Vector3(TileViewBase.lateralSpacing, TileViewBase.verticalSpacing, TileViewBase.lateralSpacing);
 
-            foreach (Tile t in gameData.Board.GetTiles())
+            foreach (Tile t in gameData.GetTiles())
             {
 
-                float depth = gameData.Board.GetTileDepth(t);
+                float depth = gameData.GetTileDepth(t);
 
                 if (depth == -1)
                     Debug.LogError("??");
 
-                Vector3 pos = gameData.Board.GetTilePosition(t);
+                Vector3 pos = gameData.GetTilePosition(t);
 
                 pos.x *= TileViewBase.lateralSpacing;
                 pos.y *= TileViewBase.verticalSpacing;
@@ -179,6 +179,7 @@ namespace pixelfat.CatsTale
 
                 if (t.type == Tile.TileType.TELEPORT)
                 {
+
                     tileColor = Color.magenta;
 
                     Position toPos = ((TeleportTile)t).to;
@@ -203,9 +204,9 @@ namespace pixelfat.CatsTale
             }
 
             Vector3 playerPos = new Vector3(
-                gameData.Board.playerPos.x * TileViewBase.lateralSpacing,
+                gameData.playerPos.x * TileViewBase.lateralSpacing,
                 0,
-                gameData.Board.playerPos.y * TileViewBase.lateralSpacing);
+                gameData.playerPos.y * TileViewBase.lateralSpacing);
 
             Gizmos.DrawWireSphere(playerPos, 1f / 2f);
 

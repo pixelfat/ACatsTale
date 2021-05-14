@@ -26,7 +26,7 @@ public class GameCamera : MonoBehaviour
 
         }
 
-        playerWorldPos = GetPlayerPosition(gameData.Board);
+        playerWorldPos = GetPlayerPosition(gameData);
         angle = new Vector3(0, 1.5f, -2.5f).normalized;
 
         camera = new GameObject("Camera").AddComponent<Camera>();
@@ -34,13 +34,13 @@ public class GameCamera : MonoBehaviour
         camera.transform.localRotation = Quaternion.Euler(30, 0, 0);
         camera.transform.localPosition = angle * distance;
 
-        gameData.Board.OnPlayerMove += HandlePlayerMove;
+        gameData.OnPlayerMove += HandlePlayerMove;
 
     }
 
     private void HandlePlayerMove()
     {
-        playerWorldPos = GetPlayerPosition(gameData.Board);
+        playerWorldPos = GetPlayerPosition(gameData);
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class GameCamera : MonoBehaviour
 
     }
 
-    public static Vector3 GetPlayerPosition(BoardData board)
+    public static Vector3 GetPlayerPosition(GameData board)
     {
 
         Vector3 pos = new Vector3(board.playerPos.x,0,board.playerPos.y);
