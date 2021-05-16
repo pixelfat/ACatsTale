@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace pixelfat.CatsTale
@@ -35,8 +37,10 @@ namespace pixelfat.CatsTale
             if (player == null)
             {
                 player = new GameObject("Player").AddComponent<PlayerView>();
+                player.allowFall = true;
                 player.transform.SetParent(transform);
                 player.OnEndMove += HandlePlayerMoved;
+                player.OnFall += HandlePlayerFall;
             }
 
             this.gameData = gameData;
@@ -61,6 +65,8 @@ namespace pixelfat.CatsTale
 
         }
 
+
+
         public void Clear()
         {
 
@@ -73,6 +79,13 @@ namespace pixelfat.CatsTale
 
             tileViews = new Dictionary<Tile, TileViewBase>();
 
+        }
+
+        private void HandlePlayerFall(Move move)
+        {
+            Destroy(player.gameObject);
+            gameData.MovePlayer(move.direction, move.type);
+            Debug.Log("Player fell.");
         }
 
         private void HandlePlayerMoved(Move move)
@@ -104,42 +117,57 @@ namespace pixelfat.CatsTale
         private void OnGUI()
         {
 
-            GUILayout.BeginHorizontal();
+            //GUILayout.BeginHorizontal();
 
-            GUILayout.Space(85);
+            //GUILayout.Space(85);
 
-            if (GUILayout.Button("Jump", GUILayout.Height(75), GUILayout.Width(75)))
-                gameData.MovePlayer(cam.facing, Move.Type.JUMP);
+            //if (GUILayout.Button("Jump", GUILayout.Height(75), GUILayout.Width(75)))
+            //    gameData.MovePlayer(cam.facing, Move.Type.JUMP);
 
-            GUILayout.EndHorizontal();
+            //GUILayout.EndHorizontal();
 
-            GUILayout.BeginHorizontal();
+            //GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Left", GUILayout.Height(75), GUILayout.Width(75)))
-                switch (cam.facing)
-                {
-                    case Move.Direction.NORTH: cam.facing = Move.Direction.WEST;break;
-                    case Move.Direction.SOUTH: cam.facing = Move.Direction.EAST; break;
-                    case Move.Direction.EAST: cam.facing = Move.Direction.NORTH; break;
-                    case Move.Direction.WEST: cam.facing = Move.Direction.SOUTH; break;
-                }
+            //if (GUILayout.Button("Left", GUILayout.Height(75), GUILayout.Width(75)))
+            //    switch (cam.facing)
+            //    {
+            //        case Move.Direction.NORTH: cam.facing = Move.Direction.WEST;break;
+            //        case Move.Direction.SOUTH: cam.facing = Move.Direction.EAST; break;
+            //        case Move.Direction.EAST: cam.facing = Move.Direction.NORTH; break;
+            //        case Move.Direction.WEST: cam.facing = Move.Direction.SOUTH; break;
+            //    }
 
-            if (GUILayout.Button("Hop", GUILayout.Height(75), GUILayout.Width(75)))
-                gameData.MovePlayer(cam.facing, Move.Type.HOP);
+            //if (GUILayout.Button("Hop", GUILayout.Height(75), GUILayout.Width(75)))
+            //    gameData.MovePlayer(cam.facing, Move.Type.HOP);
 
-            if (GUILayout.Button("Right", GUILayout.Height(75), GUILayout.Width(75)))
-                switch (cam.facing)
-                {
-                    case Move.Direction.NORTH: cam.facing = Move.Direction.EAST; break;
-                    case Move.Direction.SOUTH: cam.facing = Move.Direction.WEST; break;
-                    case Move.Direction.EAST: cam.facing = Move.Direction.SOUTH; break;
-                    case Move.Direction.WEST: cam.facing = Move.Direction.NORTH; break;
-                }
+            //if (GUILayout.Button("Right", GUILayout.Height(75), GUILayout.Width(75)))
+            //    switch (cam.facing)
+            //    {
+            //        case Move.Direction.NORTH: cam.facing = Move.Direction.EAST; break;
+            //        case Move.Direction.SOUTH: cam.facing = Move.Direction.WEST; break;
+            //        case Move.Direction.EAST: cam.facing = Move.Direction.SOUTH; break;
+            //        case Move.Direction.WEST: cam.facing = Move.Direction.NORTH; break;
+            //    }
 
-            GUILayout.EndHorizontal();
+            //GUILayout.EndHorizontal();
 
             if (GUILayout.Button("JSON", GUILayout.Height(75), GUILayout.Width(75)))
                 Debug.Log(gameData.ToJson());
+
+            if (GUILayout.Button("SAVE JSON", GUILayout.Height(75), GUILayout.Width(75)))
+            {
+                string json = gameData.ToJson();
+
+                System.Random random = new System.Random();
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                string name = new string(Enumerable.Repeat(chars, 5)
+                  .Select(s => s[random.Next(s.Length)]).ToArray());
+
+                File.WriteAllText($"{Application.persistentDataPath}/Arcade Lvl - {name}.cat", json);
+
+                Debug.Log($"File saved to: {Application.persistentDataPath}/Arcade Lvl - {name}.cat");
+
+            }
 
         }
         private void OnDrawGizmos()

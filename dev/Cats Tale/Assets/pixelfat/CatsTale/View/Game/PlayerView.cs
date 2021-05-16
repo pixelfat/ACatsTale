@@ -6,14 +6,17 @@ public class PlayerView : MonoBehaviour
 
     public delegate void PlayerViewEvent();
     public delegate void PlayerMoveEvent(Move move);
-    public PlayerMoveEvent OnStartMove, OnEndMove;
+    public PlayerMoveEvent OnStartMove, OnEndMove, OnFall;
 
     public Move.Direction facing;
 
     public GameData board;
     private Animator animator;
-    private bool isTurning = false, isJumping = false;
+    private GameObject catInstance;
+    private bool isTurning = false, isJumping = false, isFalling;
     private Move currentMove;
+
+    public bool allowFall = false;
 
     public void TurnLeft()
     {
@@ -86,9 +89,16 @@ public class PlayerView : MonoBehaviour
         }
         else
         {
-            animator.Play("Refuse");
-            Debug.Log($"{board.playerPos}, {nextPos}, {board.GetTileCountAt(nextPos)}, {nextTile}, {facing}, {moveType}");
-            return;
+            
+            if (!allowFall)
+            {
+                animator.Play("Refuse");
+                Debug.Log($"{board.playerPos}, {nextPos}, {board.GetTileCountAt(nextPos)}, {nextTile}, {facing}, {moveType}");
+                return;
+            }
+
+            animator.Play("Fall 1");
+            isFalling = true;
         }
 
         currentMove = new Move(0, facing, moveType, board.playerPos, nextPos);
@@ -102,7 +112,7 @@ public class PlayerView : MonoBehaviour
     {
 
         GameObject catResource =  Resources.Load<GameObject>("Cat");
-        GameObject catInstance = Instantiate<GameObject>(catResource);
+        catInstance = Instantiate<GameObject>(catResource);
         animator = catInstance.GetComponent<Animator>();
         catInstance.transform.SetParent(transform);
 
@@ -121,11 +131,20 @@ public class PlayerView : MonoBehaviour
         return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Idle 2");
 
     }
+
     private void UpdateState() 
     {
 
         if (!IsIdle())
             return;
+
+        if (isFalling)
+        {
+            isFalling = false;
+            Debug.Log("DEAD!:" + currentMove);
+            OnFall?.Invoke(currentMove);
+            return;
+        }
 
         if (isJumping)
         {

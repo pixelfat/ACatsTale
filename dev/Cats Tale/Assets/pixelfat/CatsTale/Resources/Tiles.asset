@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740df8e0b5680243bcab2b7bcc4cf51, type: 3}
   m_Name: Tiles
   m_EditorClassIdentifier: Assembly-CSharp::TileViewLibrary
-  tileItems:
+  tileResourceItems:
   - type: 0
-    tileView: {fileID: 8958198674788748897, guid: 0149678b1004ef849bf5093984f37ff1,
+    tileViewResource: {fileID: 8958198674788748897, guid: 0149678b1004ef849bf5093984f37ff1,
       type: 3}
   - type: 1
-    tileView: {fileID: 8958198674788748897, guid: e320bd04a212ed04daabb314993b8e13,
+    tileViewResource: {fileID: 8958198674788748897, guid: e320bd04a212ed04daabb314993b8e13,
       type: 3}
   - type: 2
-    tileView: {fileID: 8958198674788748897, guid: b8c34826808b6e545a29aff118630023,
+    tileViewResource: {fileID: 8958198674788748897, guid: b8c34826808b6e545a29aff118630023,
       type: 3}
   - type: 3
-    tileView: {fileID: 8958198674788748897, guid: 6d7f3819f7979a448bf6dc1235434a13,
+    tileViewResource: {fileID: 8958198674788748897, guid: 6d7f3819f7979a448bf6dc1235434a13,
       type: 3}

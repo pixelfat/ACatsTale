@@ -3,15 +3,18 @@ using Pixelfat.Unity;
 using System;
 using UnityEngine;
 
+/// <summary>
+/// The cat will jump off tiles
+/// Limited retries (3 + pickups)
+/// </summary>
 public class AppState_Arcade : AppState
 {
 
-    ViewState_Arcade viewState;
-
     public GameData gameData;
+
     private string _serializedGameData;
 
-    //private int level = 5;
+    private ViewState_Arcade viewState;
 
     protected override void Init()
     {
@@ -20,40 +23,18 @@ public class AppState_Arcade : AppState
 
         viewState = ViewState.Set<ViewState_Arcade>();
         viewState.OnPlayerCommand += HandlePlayerCommand;
-        viewState.OnResetGameSelected += HandleResetGameSelected;
+        viewState.OnRestartGameSelected += HandleRestartGameSelected;
+        viewState.OnResetLevelSelected += HandleResetLevelSelected;
+        viewState.OnReturnToMenuSelected += HandleReturnToMenuSelected;
 
-        //_serializedGameData = GameData.GenerateGameData(PersistentSaveGameData.Persistent.currentArcadeLvl + 5).ToJson();
-
-        GameData storedData;
         // load a copy of the saved state if there is one
         if (PersistentSaveGameData.Persistent.currentArcadeLvl > 0)
-        {
-            Debug.Log("???" + PersistentSaveGameData.Persistent.currentArcadeBoard);
-            storedData = PersistentSaveGameData.Persistent.currentArcadeBoard;
-            Debug.Log("Stored arcade game data loaded. " + storedData.ToJson());
-        }
+            _serializedGameData = PersistentSaveGameData.Persistent.currentArcadeBoard.ToJson();
         else
-        {
-            PersistentSaveGameData.Persistent.currentArcadeLvl = 0;
+            ResetGame();
 
-            storedData = GameData.GenerateGameData(PersistentSaveGameData.Persistent.currentArcadeLvl + 5);
-
-            PersistentSaveGameData.Persistent.currentArcadeBoard = storedData;
-            PersistentSaveGameData.Save();
-
-            Debug.Log("New arcade game data created.");
-
-        }
-
-        // make a copy (don't directly play PersistentSaveGameData.Persistent.currentArcadeBoard)
-        _serializedGameData = storedData.ToJson();
-
-        //gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(_serializedGameData);
-
-        //gameData.OnStateChanged += HandleGameDataStateChange;
-
-        //viewState.Set(gameData);
         StartLevel();
+
     }
 
     private void StartLevel()
@@ -81,10 +62,13 @@ public class AppState_Arcade : AppState
 
     }
 
-    private void ResetGame()
+    private void ResetLevel()
     {
 
-        if(gameData != null)
+        PersistentSaveGameData.Persistent.arcadeRestartsRemaining--;
+        PersistentSaveGameData.Save();
+
+        if (gameData != null)
             gameData.OnStateChanged -= HandleGameDataStateChange;
 
         Debug.Log("Resetting game data: " + _serializedGameData);
@@ -93,11 +77,46 @@ public class AppState_Arcade : AppState
 
     }
 
-    private void HandleResetGameSelected()
+    private void HandleRestartGameSelected()
     {
 
         ResetGame();
+        StartLevel();
+
+    }
+
+    private void ResetGame()
+    {
+
+        PersistentSaveGameData.Persistent.currentArcadeLvl = 0;
+
+        GameData storedData = GameData.GenerateGameData(PersistentSaveGameData.Persistent.currentArcadeLvl + 5);
+
+        PersistentSaveGameData.Persistent.currentArcadeBoard = storedData;
+        PersistentSaveGameData.Persistent.arcadeRestartsRemaining = 3;
+
+        PersistentSaveGameData.Save();
+
+        _serializedGameData = storedData.ToJson();
+
+        Debug.Log("New arcade game data created.");
+
+    }
+
+    private void HandleReturnToMenuSelected()
+    {
         
+        viewState.OnPlayerCommand -= HandlePlayerCommand;
+        viewState.OnRestartGameSelected -= HandleRestartGameSelected;
+        viewState.OnResetLevelSelected -= HandleResetLevelSelected;
+        viewState.OnReturnToMenuSelected -= HandleReturnToMenuSelected;
+
+        SetAppState<AppState_Start>();
+    }
+
+    private void HandleResetLevelSelected()
+    {
+        ResetLevel();
     }
 
     private void HandleGameDataStateChange()
@@ -109,20 +128,33 @@ public class AppState_Arcade : AppState
         {
             case GameData.State.START: break;
             case GameData.State.IN_PLAY: break;
-            case GameData.State.FAILED: break;
+            case GameData.State.STUCK: break;
+            case GameData.State.FALL:
+
+                if (PersistentSaveGameData.Persistent.arcadeRestartsRemaining == 1)
+                    Debug.Log("<color=red>GAME OVER!</color>");
+                else
+                {
+                    ResetLevel();
+                    Debug.Log("<color=yellow>FAILED, RESTART?</color>");
+                }
+                break;
+
             case GameData.State.POSSIBLE_COMPLETION: break;
             case GameData.State.COMPLETED: Debug.Log("LEVEL COMPLETE!"); StartNextLevel(); break;
+            
         }
+
     }
 
-    private void HandlePlayerCommand(Panel_PlayerCommands.PlayerCommand command)
+    private void HandlePlayerCommand(Panel_ArcadeGamePlayUI.PlayerCommand command)
     {
         switch (command)
         {
-            case Panel_PlayerCommands.PlayerCommand.JUMP: break;
-            case Panel_PlayerCommands.PlayerCommand.HOP: break;
-            case Panel_PlayerCommands.PlayerCommand.LEFT: break;
-            case Panel_PlayerCommands.PlayerCommand.RIGHT: break;
+            case Panel_ArcadeGamePlayUI.PlayerCommand.JUMP: break;
+            case Panel_ArcadeGamePlayUI.PlayerCommand.HOP: break;
+            case Panel_ArcadeGamePlayUI.PlayerCommand.LEFT: break;
+            case Panel_ArcadeGamePlayUI.PlayerCommand.RIGHT: break;
         }
     }
 

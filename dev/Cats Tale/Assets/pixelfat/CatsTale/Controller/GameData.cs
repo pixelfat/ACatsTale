@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -19,7 +20,6 @@ namespace pixelfat.CatsTale
 
         // story status
         public int currentStoryLevel;
-        public int pickupsRemaining;
 
         public static PersistentSaveGameData Persistent { get { return _Persistent; } set { _Persistent = value; Save(); } }
         private static PersistentSaveGameData _Persistent;
@@ -48,18 +48,13 @@ namespace pixelfat.CatsTale
 
         public static void Save()
         {
-            Save(_Persistent);
-        }
-
-        public static void Save(PersistentSaveGameData data)
-        {
 
             // use file.io to load json text from file
             string dir = Application.persistentDataPath;
             string path = Path.Combine(dir, "SaveGameData.json");
 
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
-            string json = JsonConvert.SerializeObject(data, settings);
+            string json = JsonConvert.SerializeObject(_Persistent, settings);
             
             File.WriteAllText(path, json);
 
@@ -85,7 +80,8 @@ namespace pixelfat.CatsTale
 
             START,
             IN_PLAY,
-            FAILED,
+            FALL,
+            STUCK,
             POSSIBLE_COMPLETION,
             COMPLETED
 
@@ -169,7 +165,7 @@ namespace pixelfat.CatsTale
 
                 float stepChance = 1;
                 float hopChance = .5f;
-                float tpChance = moveIndex == 0 || moveIndex > moveCount - 2 || type == Move.Type.TP ? 0 : .91f; // no chance if it's the first (start) move or the prv move was a tp
+                float tpChance = moveIndex == 0 || moveIndex > moveCount - 2 || type == Move.Type.TP ? 0 : .1f; // no chance if it's the first (start) move or the prv move was a tp
 
                 weights = new float[] { stepChance, hopChance, tpChance };
 
@@ -278,16 +274,15 @@ namespace pixelfat.CatsTale
                 case Move.Direction.WEST: to = new Position(playerPos.x - dist, playerPos.y); break;
 
             }
-            Debug.Log("----------> OnStateChanged ?");
+
             // update state
             if (state == State.START)
             {
                 state = State.IN_PLAY;
                 OnStateChanged?.Invoke();
-                Debug.Log("----------> OnStateChanged 1");
             }
 
-            if (state != State.IN_PLAY)
+            if (state != State.IN_PLAY && state != State.STUCK)
             {
                 Debug.LogWarning("Game no longer in play.");
                 return;
@@ -310,15 +305,15 @@ namespace pixelfat.CatsTale
             else
                 playerPos = to;
 
+            // jump to empty space?
             if (toTile == null)
             {
 
                 Debug.Log("Player jumped to an empty position.");
-                state = State.FAILED;
+                state = State.FALL;
                 OnStateChanged?.Invoke();
 
             }
-
             else if (GetTiles().Length == 1)
                 if (toTile.type == Tile.TileType.END)
                 {
@@ -333,10 +328,55 @@ namespace pixelfat.CatsTale
                     Debug.Log($"<color=yellow>Stage Completed [NOT END TILE].</color>");
                 }
 
+            // no valid move?
+            if (fromTile.type != Tile.TileType.END && GetValidMoves().Length == 0)
+            {
+                Debug.Log("Player stuck (no tiles to jump to).");
+                state = State.STUCK;
+                OnStateChanged?.Invoke();
+            }
+
             if (toTile != null)
                 Debug.Log($"New player position: {playerPos} {toTile.GetType()}");
 
             OnPlayerMove?.Invoke();
+
+        }
+
+        public Move[] GetValidMoves()
+        {
+
+            List<Move> validMoves = new List<Move>();
+            Position to = null;
+
+            foreach (Move.Type moveType in new Move.Type[] { Move.Type.HOP, Move.Type.JUMP })
+            {
+
+                int dist = moveType == Move.Type.JUMP ? 2 : 1;
+
+                foreach (Move.Direction dir in Enum.GetValues(typeof(Move.Direction)))
+                {
+
+                    switch (dir)
+                    {
+
+                        case Move.Direction.NORTH: to = new Position(playerPos.x, playerPos.y + dist); break;
+                        case Move.Direction.SOUTH: to = new Position(playerPos.x, playerPos.y - dist); break;
+                        case Move.Direction.EAST: to = new Position(playerPos.x + dist, playerPos.y); break;
+                        case Move.Direction.WEST: to = new Position(playerPos.x - dist, playerPos.y); break;
+
+                    }
+
+                    Tile toTile = GetTileAt(to);
+
+                    if(toTile != null)
+                        validMoves.Add(new Move(0, dir, moveType, playerPos, to));
+
+                }
+
+            }
+
+            return validMoves.ToArray();
 
         }
 
