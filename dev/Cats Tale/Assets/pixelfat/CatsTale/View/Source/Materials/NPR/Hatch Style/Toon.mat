@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toon
+  m_Shader: {fileID: 4800000, guid: 60266dd225cdd804696fba6a0852c651, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ContourTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch0Tex:
+        m_Texture: {fileID: 2800000, guid: a2e310ad5a6f21543a1a1c01606f9162, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch1Tex:
+        m_Texture: {fileID: 2800000, guid: d368bd194e13afc4ebde206553f6e0c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch2Tex:
+        m_Texture: {fileID: 2800000, guid: a179e220503963e4ab88626114fbca77, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch3Tex:
+        m_Texture: {fileID: 2800000, guid: 7efd91c457d888b438139b111f220acb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch4Tex:
+        m_Texture: {fileID: 2800000, guid: 08db23147f9e7874d8f3de816219a437, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hatch5Tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampTex:
+        m_Texture: {fileID: 2800000, guid: 92981a7e88e3dd04cad5161f3fbe5c0f, type: 3}
+        m_Scale: {x: 0, y: 0}
+        m_Offset: {x: 0, y: 0}
+    - _StylizedShadowTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Amplitude: 0.01
+    - _ContourWidth: -0.05
+    - _ExpandFactor: 1
+    - _Glossiness: 0.1
+    - _HatchDensity: 1.7
+    - _HatchScale: 1
+    - _Intensity: 0.5
+    - _OutlineWidth: 0.04
+    - _RampSmooth: 0.06
+    - _RampThreshold: 0.08
+    - _RimMax: 1
+    - _RimMin: 0.5
+    - _RimPower: 2.1343284
+    - _SpecPower: 128
+    - _SpecSmooth: 0.1
+    - _SpecularRotationX: 0
+    - _SpecularRotationY: 0
+    - _SpecularRotationZ: 0
+    - _SpecularScale: 0.01
+    - _SpecularScaleX: 0
+    - _SpecularScaleY: 0
+    - _SpecularSplitX: 0
+    - _SpecularSplitY: 0
+    - _SpecularTranslationX: 0
+    - _SpecularTranslationY: 0
+    - _Speed: 6
+    m_Colors:
+    - _Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    - _ContourColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _DarkColor: {r: 0.6132076, g: 0.6082502, b: 0.42037496, a: 1}
+    - _DiffuseColor: {r: 0.15892226, g: 0.15883268, b: 0.17164177, a: 1}
+    - _HatchColor: {r: 0, g: 0, b: 0, a: 0.8}
+    - _HighlitColor: {r: 0.7924528, g: 0.7587664, b: 0.4610181, a: 0.5294118}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.54509807}
+    - _RimColor: {r: 0.24849632, g: 0.25976476, b: 0.3432836, a: 1}
+    - _SpecularColor: {r: 0.029850721, g: 0.029850721, b: 0.029850721, a: 1}
+  m_BuildTextureStacks: []

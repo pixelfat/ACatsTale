@@ -65,8 +65,10 @@ namespace pixelfat.CatsTale
 
         }
 
-
-
+        private void Update()
+        {
+            cam.facing = player.facing;
+        }
         public void Clear()
         {
 

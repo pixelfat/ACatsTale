@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 092c94e36d235d1498c10338463bb6b9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Divine  Rhapsody
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e1c368ee7e07cac47b8058fa5e7b10ae, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

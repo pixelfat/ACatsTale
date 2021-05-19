@@ -17,7 +17,7 @@ public class ViewState_Start : ViewState
 
         base.Init();
 
-        gui = Add<Panel_Start>("ui/Panel - Start", false);
+        gui = Add<Panel_Start>("ui/Sketch/Panel - Start", false);
 
         gui.OnBegin += HandleOnBeginSelected;
         gui.OnLoad += HandleOnLoadSelected;

@@ -1,0 +1,8 @@
+fileFormatVersion: 2
+guid: e8b07e6e066867943848d81b8c4d4283
+labels:
+- postprocess
+- shader
+- imageeffect
+TextScriptImporter:
+  userData: 

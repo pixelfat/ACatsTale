@@ -48,7 +48,7 @@ public class ViewState_Arcade : ViewState
         base.Init();
 
         // UI
-        playerControls = Add<Panel_ArcadeGamePlayUI>("ui/Panel - Arcade Player Controls", false);
+        playerControls = Add<Panel_ArcadeGamePlayUI>("ui/Sketch/Panel - Arcade Player Controls", false);
         playerControls.OnPlayerCommand += HandlePlayerCommand;
         playerControls.OnRestartLevelSelected += HandleRestartLevelSelected;
         playerControls.OnSettingsSelected += HandleViewSettingsSelected;
