@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class ArcadeLevelCompleteDialogue : ViewPanel
+public class Panel_ArcadeLevelCompleteDialogue : ViewPanel
 {
 
     public delegate void ArcadeLevelCompleteDialogueEvent();

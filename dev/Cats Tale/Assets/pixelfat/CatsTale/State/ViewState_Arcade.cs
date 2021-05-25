@@ -10,9 +10,12 @@ public class ViewState_Arcade : ViewState
     public Panel_ArcadeGamePlayUI.PlayerOptionEvent OnRestartGameSelected, OnResetLevelSelected, OnSettingsSelected, OnReturnToMenuSelected;
 
     private Panel_ArcadeGamePlayUI playerControls;
-    private ArcadeLevelCompleteDialogue Panel_LevelComplete;
-    private GameOverDialogue Panel_GameOver;
-    private ConfirmDialogue Panel_ConfirmRestartLevel;
+
+    // move these to UI?
+    private Panel_ArcadeLevelCompleteDialogue Panel_LevelComplete;
+    private Panel_GameOverDialogue Panel_GameOver;
+    private Panel_ConfirmDialogue Panel_ConfirmRestartLevel;
+    private Panel_Settings Panel_Settings;
 
     private GameView gameView;
     private GameData gameData;
@@ -35,6 +38,7 @@ public class ViewState_Arcade : ViewState
         gameView = new GameObject("Game").AddComponent<GameView>();
         gameView.gameObject.transform.SetParent(transform);
         gameView.Set(gameData);
+        gameView.player.allowFall = PersistentSaveGameData.Persistent.allowFall;
 
         gameData.OnStateChanged += HandleGameStateChanged;
 
@@ -94,7 +98,7 @@ public class ViewState_Arcade : ViewState
         if (Panel_GameOver != null)
             return;
 
-        Panel_GameOver = Add<GameOverDialogue>("ui/Panel - Arcade Game Over", false);
+        Panel_GameOver = Add<Panel_GameOverDialogue>("ui/Panel - Arcade Game Over", false);
         Panel_GameOver.OnRestartSelected += HandleRestartGameSelected;
         Panel_GameOver.OnExitToMenuSelected += HandleExitGameSelected;
 
@@ -152,7 +156,7 @@ public class ViewState_Arcade : ViewState
         if (Panel_ConfirmRestartLevel != null)
             RemoveConfirmRestartLevelDialogue();
 
-        Panel_ConfirmRestartLevel = Add<ConfirmDialogue>("ui/Panel - Confirm", false);
+        Panel_ConfirmRestartLevel = Add<Panel_ConfirmDialogue>("ui/Panel - Confirm", false);
         Panel_ConfirmRestartLevel.SetMessageText("Restart this level?");
         Panel_ConfirmRestartLevel.OnYesSelected += HandleRestartLevelConfirmed;
         Panel_ConfirmRestartLevel.OnNoSelected += RemoveConfirmRestartLevelDialogue;
@@ -176,8 +180,56 @@ public class ViewState_Arcade : ViewState
 
     private void HandleViewSettingsSelected()
     {
-        // show settings UI
-        //throw new NotImplementedException();
+
+        Panel_Settings = Add<Panel_Settings>("ui/sketch/Panel - Settings", false);
+        Panel_Settings.OnClose += HandleCloseSettingsPanelSelected;
+
+        Panel_Settings.OnToggleFalling += HandleToggleFalling;
+        Panel_Settings.OnToggleMusic += HandleToggleMusic;
+        Panel_Settings.OnToggleSfx += HandleToggleSfx;
+
+        Panel_Settings.allowFall = PersistentSaveGameData.Persistent.allowFall;
+        Panel_Settings.musicEnabled = PersistentSaveGameData.Persistent.musicEnabled;
+        Panel_Settings.sfxEnabled = PersistentSaveGameData.Persistent.sfxEnabled;
+
+    }
+
+    private void HandleToggleSfx(bool obj)
+    {
+        if (obj != PersistentSaveGameData.Persistent.sfxEnabled)
+        {
+            PersistentSaveGameData.Persistent.sfxEnabled = obj;
+            PersistentSaveGameData.Save();
+        }
+    }
+
+    private void HandleToggleMusic(bool obj)
+    {
+        if (obj != PersistentSaveGameData.Persistent.musicEnabled)
+        {
+            PersistentSaveGameData.Persistent.musicEnabled = obj;
+            PersistentSaveGameData.Save();
+        }
+    }
+
+    private void HandleToggleFalling(bool obj)
+    {
+        if (obj != PersistentSaveGameData.Persistent.allowFall)
+        {
+            gameView.player.allowFall = obj;
+            PersistentSaveGameData.Persistent.allowFall = obj;
+            PersistentSaveGameData.Save();
+        }
+    }
+
+    private void HandleCloseSettingsPanelSelected()
+    {
+        Panel_Settings.OnClose -= HandleCloseSettingsPanelSelected;
+        Panel_Settings.OnToggleFalling -= HandleToggleFalling;
+        Panel_Settings.OnToggleMusic -= HandleToggleMusic;
+        Panel_Settings.OnToggleSfx -= HandleToggleSfx;
+
+        Remove(Panel_Settings);
     }
 
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class ConfirmDialogue : ViewPanel
+public class Panel_ConfirmDialogue : ViewPanel
 {
 
     public delegate void ConfirmDialogueEvent();

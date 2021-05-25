@@ -22,6 +22,13 @@ namespace pixelfat.CatsTale
         public int currentStoryLevel;
 
         public static PersistentSaveGameData Persistent { get { return _Persistent; } set { _Persistent = value; Save(); } }
+
+        // settings
+        public bool allowFall = false;
+        public bool sfxEnabled = true;
+        public bool musicEnabled = false;
+
+
         private static PersistentSaveGameData _Persistent;
 
         public static void Load()

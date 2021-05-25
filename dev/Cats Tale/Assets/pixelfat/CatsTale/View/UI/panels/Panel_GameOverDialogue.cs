@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class GameOverDialogue : ViewPanel
+public class Panel_GameOverDialogue : ViewPanel
 {
 
     public delegate void GameOverDialogueDialogueEvent();

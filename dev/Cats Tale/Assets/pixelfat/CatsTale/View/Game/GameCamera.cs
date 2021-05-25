@@ -32,7 +32,7 @@ public class GameCamera : MonoBehaviour
         }
 
         playerWorldPos = GetPlayerPosition(gameData);
-        angle = new Vector3(0, 1.5f, -2.5f).normalized;
+        angle = new Vector3(0, 2.25f, -2.5f).normalized;
 
         camera = new GameObject("Foreground Camera").AddComponent<Camera>();
         camera.transform.SetParent(transform);
