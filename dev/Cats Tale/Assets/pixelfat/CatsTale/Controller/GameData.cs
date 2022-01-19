@@ -330,7 +330,7 @@ namespace pixelfat.CatsTale
                 }
                 else
                 {
-                    state = State.COMPLETED;
+                    state = State.FALL;
                     OnStateChanged?.Invoke();
                     Debug.Log($"<color=yellow>Stage Completed [NOT END TILE].</color>");
                 }

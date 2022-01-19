@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amplitude: 0.02
+    - _Amplitude: 0.03
     - _BumpScale: 1
     - _ContourWidth: 0.01
     - _Cutoff: 0.5
@@ -75,12 +75,12 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 6
+    - _Speed: 5
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ContourColor: {r: 0, g: 0, b: 0, a: 0.5019608}
+    - _ContourColor: {r: 0.08490565, g: 0.08490565, b: 0.0678177, a: 0.12941177}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

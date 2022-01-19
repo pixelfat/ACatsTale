@@ -52,6 +52,8 @@ public class Panel_ArcadeGamePlayUI : ViewPanel
         livesRemainingDisplay.SetLivesRemaining(PersistentSaveGameData.Persistent.arcadeRestartsRemaining);
         Button_ResetLevel.gameObject.SetActive(PersistentSaveGameData.Persistent.arcadeRestartsRemaining > 1);
 
+        HandlePlayerMoved();
+
     }
 
     protected override void Start()

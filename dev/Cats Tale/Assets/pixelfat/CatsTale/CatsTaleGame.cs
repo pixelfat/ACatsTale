@@ -4,12 +4,22 @@ using UnityEngine;
 
 /// <summary>
 /// TODO:
-/// - Settings - Save Level (for use in story mode / debugging)
-/// - Respawns in arcade mode when stuck
-/// - Camera movement - drag around?
-/// - Flashing tile type
-///     - Implement fall & respawn / automatic restart?
+/// 
+/// - Level reset / next level 
+///     - Keep world position (move game to end position of prev game)
+///     - Level complete / continue screen
+/// 
+/// - Settings 
+///     - Save Level (for use in story mode / debugging)
+///     - About / Help / Attributions
+///
+/// - Audio Controller
+///     - Music
+///     - SFX
 ///     
+/// - Teleport FX
+/// - Flashing tile type
+/// 
 /// - Story-mode 
 ///  - Show story slides
 ///  - Load 3d Env

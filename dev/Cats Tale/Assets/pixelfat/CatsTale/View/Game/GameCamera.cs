@@ -1,5 +1,8 @@
 using pixelfat.CatsTale;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameCamera : MonoBehaviour
 {
@@ -12,6 +15,8 @@ public class GameCamera : MonoBehaviour
     public Canvas bgCanvas;
     public Vector3 angle;
     public float distance = 3f;
+    public float rotateSpeed = 0.15f;
+
     private Vector3 playerWorldPos;
 
     private Vector3 lastMousePos = Vector3.zero;
@@ -39,7 +44,7 @@ public class GameCamera : MonoBehaviour
         camera.transform.localRotation = Quaternion.Euler(30, 0, 0);
         camera.transform.localPosition = angle * distance;
         camera.depth = 1;
-        camera.clearFlags = CameraClearFlags.Color;
+        camera.clearFlags = CameraClearFlags.Depth;
         camera.backgroundColor = new Color(.75f, .75f, .6f);
 
         //bgCamera = new GameObject("BG Camera").AddComponent<Camera>();
@@ -68,10 +73,7 @@ public class GameCamera : MonoBehaviour
 
         camera.transform.localPosition = angle * distance;
 
-
-
         distance -= Input.mouseScrollDelta.y;
-
 
         if (Input.touchCount == 2)
         {
@@ -88,8 +90,6 @@ public class GameCamera : MonoBehaviour
                 float newDist = Vector2.Distance(touch1.position, touch2.position);
                 touchDist = lastDist - newDist;
                 lastDist = newDist;
-
-                // Your Code Here
                 distance += touchDist * 0.1f;
             }
         }
@@ -99,11 +99,11 @@ public class GameCamera : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             lastMousePos = Input.mousePosition;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !IsPointerOverUIElement())
         {
 
             Vector3 delta = lastMousePos - Input.mousePosition;
-            transform.localRotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y + delta.x, 0);
+            transform.localRotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y + (delta.x * rotateSpeed), 0);
             lastMousePos = Input.mousePosition;
         }
         else
@@ -125,7 +125,15 @@ public class GameCamera : MonoBehaviour
             }
         }
     }
-    
+
+    public static bool IsPointerOverUIElement()
+    {
+        var eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Where(r => r.gameObject.layer == 5 ).Count() > 0;
+    }
 
     public static Vector3 GetPlayerPosition(GameData board)
     {
